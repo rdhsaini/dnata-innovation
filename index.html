@@ -1,578 +1,340 @@
 <!DOCTYPE html>
-
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>dnata Cargo · Global Innovation Network · April 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --col-primary:   #0D1B3E;
-  --col-gold:      #C9A84C;
-  --col-bg:        #F5F7FA;
-  --col-surface:   #FFFFFF;
-  --col-border:    #E2E8F0;
-  --col-text:      #1A2B4A;
-  --col-muted:     #7A90B0;
-  --col-blue:      #2060C8;
-  --col-blue-lt:   #EEF4FF;
-  --col-teal:      #0B7A63;
-  --col-teal-lt:   #E6F5F1;
-  --col-purple:    #6B35C4;
-  --col-purple-lt: #F0EAFB;
-  --col-amber:     #C47A0A;
-  --col-amber-lt:  #FEF3DC;
-  --col-green:     #1A7A45;
-  --col-green-lt:  #E3F5EB;
-  --col-info:      #1E6EBB;
-  --col-info-lt:   #EBF4FF;
-  --col-slate:     #7A90B0;
-  --col-slate-lt:  #EEF1F6;
-  --col-tl-done:   #1A7A45;
-  --col-tl-now:    #C9A84C;
-  --col-tl-future: #CBD5E1;
-  --font-main: 'Inter', sans-serif;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#F4F6FA;color:#1A2B4A;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+:root{
+  --navy:#0D1B3E;--gold:#C9A84C;--surface:#FFFFFF;--bg:#F4F6FA;--border:#E2E8F0;--muted:#7A90B0;
+  --blue:#2060C8;--blue-lt:#EEF4FF;--teal:#0B7A63;--teal-lt:#E6F5F1;
+  --purple:#6B35C4;--purple-lt:#F0EAFB;--amber:#C47A0A;--amber-lt:#FEF3DC;
+  --green:#1A7A45;--green-lt:#E3F5EB;--info:#1E6EBB;--info-lt:#EBF4FF;--slate:#7A90B0;
 }
+.page{width:100%;max-width:900px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.hero{background:var(--surface);border-bottom:1px solid var(--border);padding:40px 0 32px}
+.rule{width:36px;height:3px;background:var(--navy);border-radius:2px;margin-bottom:14px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.h1{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:600;color:var(--navy);line-height:1.1;margin-bottom:6px}
+.sub{font-size:14px;color:var(--muted);margin-bottom:32px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:32px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 16px}
+.sn{font-size:2rem;font-weight:600;color:var(--navy);line-height:1;margin-bottom:6px}
+.sl{font-size:12px;color:var(--muted);line-height:1.45}
+.tl-s{overflow-x:auto;padding-bottom:4px}
+.tl{display:flex;align-items:flex-start;position:relative;min-width:560px}
+.tl-line{position:absolute;top:13px;left:0;right:0;height:1px;background:var(--border)}
+.tl-done{position:absolute;top:13px;left:0;height:1px;background:var(--green);width:28%}
+.tl-step{flex:1;display:flex;flex-direction:column;align-items:center;position:relative}
+.dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-bottom:10px}
+.dot.done{background:var(--green);box-shadow:0 0 0 4px rgba(26,122,69,.15)}
+.dot.now{background:var(--gold);box-shadow:0 0 0 5px rgba(201,168,76,.25),0 0 0 10px rgba(201,168,76,.09);animation:pulse 2.2s ease infinite}
+.dot.fut{background:var(--surface);border:1.5px solid var(--border)}
+.dot svg{width:12px;height:12px}
+.tl-m{font-size:11px;color:var(--muted);margin-bottom:3px;text-align:center}
+.tl-m.now{color:var(--gold);font-weight:600}
+.tl-e{font-size:11px;color:var(--muted);text-align:center;line-height:1.35;padding:0 4px}
+.tl-e.now{color:var(--navy);font-weight:500}
+.section{padding:32px 0}
+.sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.sec-lbl{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sec-hint{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px;align-items:start}
+.col{display:flex;flex-direction:column}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.1);border-color:#CBD5E1}
+.card.open{border-color:var(--cc)}
+.c-stripe{height:4px}
+.c-body{padding:20px}
+.c-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.c-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-ico svg{width:19px;height:19px}
+.c-name{font-size:15px;font-weight:600;color:var(--navy);line-height:1.25}
+.c-desc{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:14px}
+.p-row{display:flex;justify-content:space-between;margin-bottom:6px}
+.p-lbl{font-size:12px;color:var(--muted)}
+.p-pct{font-size:12px;font-weight:600}
+.p-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:14px}
+.p-fill{height:100%;border-radius:3px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.pill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:99px;border:1px solid transparent}
+.pa{background:var(--amber-lt);color:var(--amber);border-color:#EFC97A}
+.pg{background:var(--green-lt);color:var(--green);border-color:#9FD6B5}
+.pi{background:var(--info-lt);color:var(--info);border-color:#9AC8EF}
+.pp{background:var(--purple-lt);color:var(--purple);border-color:#BFAAEe}
+.c-foot{border-top:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.c-date{font-size:12px;color:var(--muted)}
+.c-date strong{color:var(--navy);font-weight:600}
+.chev{font-size:16px;color:var(--muted);transition:transform .22s;pointer-events:none;display:inline-block}
+.card.open .chev{transform:rotate(180deg)}
+.exp{max-height:0;overflow:hidden;transition:max-height .42s ease}
+.exp.open{max-height:1200px}
+.exp-in{background:#FAFBFD;border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;padding:20px;margin-top:-1px}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.d-hd{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.si{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px}
+.sd{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.sd.a{background:var(--amber)}.sd.g{background:var(--green)}.sd.i{background:var(--info)}.sd.s{background:var(--slate)}
+.st{font-size:13px;color:var(--navy);line-height:1.5}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;border-top:3px solid transparent}
+.kv{font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:2px}
+.kl{font-size:11px;color:var(--muted);line-height:1.35}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{font-size:12px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;gap:5px}
+.chip.on{border-color:#94A3B8;color:var(--navy);font-weight:500}
+.ndot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.nxt{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 14px;font-size:13px;color:var(--navy);line-height:1.55}
+.nxt strong{color:var(--gold);font-weight:600}
+.sum-s{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0}
+.sum-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.summ{padding:20px 24px;background:var(--surface);border-left:3px solid transparent;border-right:1px solid var(--border);transition:background .18s}
+.summ:last-child{border-right:none}
+.summ:hover{background:var(--bg)}
+.sname{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.sstat{font-size:12px;color:var(--muted);margin-bottom:8px}
+.sarr{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;display:block}
+.snxt{font-size:12px;color:var(--navy);line-height:1.5}
+.footer{padding:20px 0}
+.f-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.f-l{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.fdot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.f-r{font-size:12px;color:var(--muted)}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-main);
-  background: var(--col-bg);
-  color: var(--col-text);
-  font-size: 14px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+/* Loading overlay */
+#loading{position:fixed;inset:0;background:#F4F6FA;display:flex;align-items:center;justify-content:center;z-index:999;flex-direction:column;gap:12px}
+.spin{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite}
+.load-txt{font-size:13px;color:var(--muted)}
+
+@keyframes pulse{0%,100%{box-shadow:0 0 0 5px rgba(201,168,76,.25),0 0 0 10px rgba(201,168,76,.09)}50%{box-shadow:0 0 0 8px rgba(201,168,76,.28),0 0 0 16px rgba(201,168,76,.04)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fadein{opacity:0;animation:up .5s ease .1s forwards}
+
+@media(max-width:860px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .d-grid{grid-template-columns:1fr}
+  .sum-grid{grid-template-columns:1fr}
+  .summ{border-right:none;border-bottom:1px solid var(--border)}
+  .summ:last-child{border-bottom:none}
 }
-
-
-
-/* ── EDITABLE ELEMENTS ── */
-[] {
-  outline: none;
-  border-radius: 4px;
-  transition: background 0.15s, box-shadow 0.15s;
-  cursor: text;
+@media(max-width:560px){
+  .page{padding:0 16px}
+  .grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .h1{font-size:1.5rem}
 }
-[]:hover {
-  background: rgba(201,168,76,0.08);
-  box-shadow: 0 0 0 2px rgba(201,168,76,0.25);
-}
-[]:focus {
-  background: rgba(201,168,76,0.12);
-  box-shadow: 0 0 0 2px rgba(201,168,76,0.5);
-}
-
-/* Subtle edit indicator dot on hover */
-[]:hover::after {
-  content: ' ✎';
-  font-size: 0.7em;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* ── LAYOUT ── */
-.page {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 1.75rem 4rem;
-}
-
-/* ── HERO ── */
-.hero {
-  background: var(--col-surface);
-  border: 1px solid var(--col-border);
-  border-radius: 16px;
-  padding: 2.25rem 2rem 2rem;
-  margin: 1.5rem 0 1.25rem;
-  opacity: 0; animation: up 0.55s ease 0.05s forwards;
-}
-.hero-rule { width: 36px; height: 3px; background: var(--col-primary); border-radius: 2px; margin-bottom: 1.1rem; }
-.hero-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--col-muted); margin-bottom: 0.4rem; }
-.hero-title { font-size: 2rem; font-weight: 600; color: var(--col-primary); line-height: 1.15; margin-bottom: 0.3rem; }
-.hero-sub { font-size: 0.82rem; color: var(--col-muted); margin-bottom: 2rem; }
-
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 2rem; }
-.stat { background: var(--col-bg); border: 1px solid var(--col-border); border-radius: 10px; padding: 1.1rem; }
-.stat-num { font-size: 2rem; font-weight: 600; color: var(--col-primary); line-height: 1; margin-bottom: 0.3rem; }
-.stat-lbl { font-size: 0.72rem; color: var(--col-muted); line-height: 1.4; }
-
-/* Timeline */
-.timeline { display: flex; align-items: flex-start; position: relative; }
-.tl-spine { position: absolute; top: 13px; left: 0; right: 0; height: 1px; background: var(--col-border); }
-.tl-spine-done { position: absolute; top: 13px; left: 0; height: 1px; background: var(--col-tl-done); width: 28%; }
-.tl-step { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
-.tl-dot { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; margin-bottom: 8px; transition: transform 0.2s; flex-shrink: 0; }
-.tl-dot:hover { transform: scale(1.12); }
-.tl-dot.done { background: var(--col-tl-done); box-shadow: 0 0 0 4px rgba(26,122,69,0.12); }
-.tl-dot.now { background: var(--col-tl-now); box-shadow: 0 0 0 5px rgba(201,168,76,0.2), 0 0 0 10px rgba(201,168,76,0.07); animation: pulse 2.2s ease infinite; }
-.tl-dot.future { background: var(--col-surface); border: 1.5px solid var(--col-tl-future); }
-.tl-dot svg { width: 12px; height: 12px; }
-.tl-lbl { font-size: 0.65rem; color: var(--col-muted); margin-bottom: 2px; text-align: center; }
-.tl-lbl.now { color: var(--col-gold); font-weight: 600; }
-.tl-ev { font-size: 0.68rem; color: var(--col-muted); text-align: center; line-height: 1.35; }
-.tl-ev.now { color: var(--col-text); font-weight: 500; }
-
-/* ── CARDS ── */
-.cards-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; opacity: 0; animation: up 0.55s ease 0.3s forwards; }
-.cards-row-lbl { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--col-muted); }
-.cards-row-hint { font-size: 0.72rem; color: var(--col-muted); }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-bottom: 1.5rem; }
-.card-wrap { display: flex; flex-direction: column; }
-.card { background: var(--col-surface); border: 1px solid var(--col-border); border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s; opacity: 0; }
-.card:nth-child(1) { animation: up 0.55s ease 0.38s forwards; }
-.card:nth-child(2) { animation: up 0.55s ease 0.48s forwards; }
-.card:nth-child(3) { animation: up 0.55s ease 0.58s forwards; }
-.card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-.card.open { border-color: var(--card-accent, var(--col-border)); box-shadow: 0 0 0 3px rgba(0,0,0,0.04); }
-.card-stripe { height: 3px; }
-.card-body { padding: 1.3rem; }
-.card-icon-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
-.card-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.card-icon svg { width: 19px; height: 19px; }
-.card-name { font-size: 1rem; font-weight: 600; color: var(--col-primary); line-height: 1.2; }
-.card-desc { font-size: 0.75rem; color: var(--col-muted); line-height: 1.5; margin-bottom: 1rem; }
-.prog-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
-.prog-lbl { font-size: 0.72rem; color: var(--col-muted); }
-.prog-pct { font-size: 0.72rem; font-weight: 600; }
-.prog-track { height: 4px; background: var(--col-border); border-radius: 2px; overflow: hidden; margin-bottom: 1rem; }
-.prog-fill { height: 100%; border-radius: 2px; }
-.pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
-.pill { font-size: 0.66rem; font-weight: 500; padding: 3px 9px; border-radius: 99px; border: 1px solid transparent; }
-.pill-amber  { background: var(--col-amber-lt);  color: var(--col-amber);  border-color: #f3d08a; }
-.pill-green  { background: var(--col-green-lt);  color: var(--col-green);  border-color: #a3dbb9; }
-.pill-info   { background: var(--col-info-lt);   color: var(--col-info);   border-color: #a0caef; }
-.pill-slate  { background: var(--col-slate-lt);  color: var(--col-slate);  border-color: #c8d3e0; }
-.pill-purple { background: var(--col-purple-lt); color: var(--col-purple); border-color: #c5aeee; }
-.card-foot { border-top: 1px solid var(--col-border); padding: 0.75rem 1.3rem; display: flex; align-items: center; justify-content: space-between; }
-.card-completion { font-size: 0.72rem; color: var(--col-muted); }
-.card-completion strong { color: var(--col-primary); font-weight: 600; }
-.chevron { font-size: 1.1rem; color: var(--col-muted); transition: transform 0.22s; display: inline-block; line-height: 1; pointer-events: none; }
-.card.open .chevron { transform: rotate(180deg); }
-
-/* ── DETAIL PANELS ── */
-.detail { max-height: 0; overflow: hidden; transition: max-height 0.42s ease; }
-.detail.open { max-height: 1400px; }
-.detail-inner { background: var(--col-bg); border: 1px solid var(--col-border); border-top: none; border-radius: 0 0 14px 14px; padding: 1.3rem; margin-top: -1px; }
-.detail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.detail-head { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--col-muted); margin-bottom: 0.85rem; }
-.si { display: flex; gap: 9px; align-items: flex-start; margin-bottom: 8px; }
-.si-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-.si-dot.amber  { background: var(--col-amber); }
-.si-dot.green  { background: var(--col-green); }
-.si-dot.info   { background: var(--col-info); }
-.si-dot.purple { background: var(--col-purple); }
-.si-dot.slate  { background: var(--col-slate); }
-.si-text { font-size: 0.78rem; color: var(--col-text); line-height: 1.5; }
-.kpi-trio { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 1rem 0; }
-.kpi { background: var(--col-surface); border: 1px solid var(--col-border); border-radius: 10px; padding: 0.75rem; border-top: 3px solid transparent; }
-.kpi-val { font-size: 1.25rem; font-weight: 600; color: var(--col-primary); margin-bottom: 2px; }
-.kpi-lbl { font-size: 0.66rem; color: var(--col-muted); line-height: 1.35; }
-.net-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
-.net-chip { font-size: 0.72rem; padding: 5px 11px; border-radius: 99px; border: 1px solid var(--col-border); color: var(--col-muted); display: flex; align-items: center; gap: 5px; }
-.net-chip.on { border-color: #94A3B8; color: var(--col-text); font-weight: 500; }
-.net-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.next-box { background: var(--col-surface); border: 1px solid var(--col-border); border-left: 3px solid var(--col-gold); border-radius: 0 8px 8px 0; padding: 0.85rem 1rem; font-size: 0.78rem; color: var(--col-text); line-height: 1.55; }
-.next-box strong { color: var(--col-gold); font-weight: 600; }
-
-/* ── SUMMARY ── */
-.summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--col-border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; opacity: 0; animation: up 0.55s ease 0.72s forwards; }
-.summ { background: var(--col-surface); padding: 1.2rem 1.3rem; border-left: 3px solid transparent; transition: background 0.18s; }
-.summ:hover { background: var(--col-bg); }
-.summ-name { font-size: 0.82rem; font-weight: 600; color: var(--col-primary); margin-bottom: 0.2rem; }
-.summ-status { font-size: 0.72rem; color: var(--col-muted); margin-bottom: 0.6rem; }
-.summ-arrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--col-gold); margin-bottom: 0.25rem; display: block; }
-.summ-next { font-size: 0.74rem; color: var(--col-text); line-height: 1.5; }
-
-/* ── FOOTER ── */
-.footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1.25rem; border-top: 1px solid var(--col-border); opacity: 0; animation: up 0.55s ease 0.85s forwards; }
-.footer-left { font-size: 0.72rem; color: var(--col-muted); display: flex; align-items: center; gap: 7px; }
-.footer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--col-gold); flex-shrink: 0; }
-.footer-right { font-size: 0.72rem; color: var(--col-muted); }
-
-/* ── TOAST ── */
-#toast {
-  position: fixed; bottom: 1.5rem; right: 1.5rem;
-  background: var(--col-primary); color: #fff;
-  font-size: 0.75rem; padding: 10px 16px; border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  opacity: 0; transform: translateY(8px);
-  transition: opacity 0.25s, transform 0.25s;
-  pointer-events: none; z-index: 9999;
-}
-#toast.show { opacity: 1; transform: translateY(0); }
-
-/* ── ANIMATIONS ── */
-@keyframes up { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
-@keyframes pulse {
-  0%,100% { box-shadow: 0 0 0 5px rgba(201,168,76,0.2), 0 0 0 10px rgba(201,168,76,0.07); }
-  50%      { box-shadow: 0 0 0 7px rgba(201,168,76,0.25),0 0 0 14px rgba(201,168,76,0.04); }
-}
-
-/* ── CENTRE FIX ── */
-html { margin: 0; padding: 0; }
-body { margin: 0; padding: 0; overflow-x: hidden; }
-
-.page {
-  box-sizing: border-box !important;
-  width: 100% !important;
-  max-width: 900px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
-}
-.hero, .cards-row, .cards, .summary, .footer {
-  box-sizing: border-box !important;
-  width: 100% !important;
-}
-.cards {
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-}
-.stats {
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-}
-.summary {
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-}
-@media (max-width: 860px) {
-  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .detail-cols { grid-template-columns: 1fr !important; }
-  .summary { grid-template-columns: 1fr !important; }
-  .summ { border-right: none !important; border-bottom: 1px solid var(--col-border) !important; }
-  .summ:last-child { border-bottom: none !important; }
-}
-@media (max-width: 560px) {
-  .cards { grid-template-columns: 1fr !important; }
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .page { padding: 0 16px !important; }
-  .tb-hint { display: none !important; }
-  .hero-title { font-size: 1.5rem !important; }
-}
-
 </style>
 </head>
 <body>
 
-<!-- ══ TOOLBAR ══ -->
-  <div class="tb-right">
-    <button class="btn btn-ghost" onclick="resetAll()">↺ Reset</button>
-    <button class="btn btn-primary" onclick="downloadHTML()">⬇ Download updated file</button>
+<!-- Loading spinner shown until DB content loads -->
+<div id="loading">
+  <div class="spin"></div>
+  <div class="load-txt">Loading latest content...</div>
+</div>
+
+<div id="app" style="display:none">
+
+<div class="hero fadein">
+  <div class="page">
+    <div class="rule"></div>
+    <div class="eyebrow" id="e-eyebrow">dnata Cargo · Innovation & Digitalisation</div>
+    <h1 class="h1" id="e-h1">Global innovation network</h1>
+    <p class="sub" id="e-sub">Initiatives status deck · April 2026 · 3 active workstreams</p>
+    <div class="stats">
+      <div class="stat"><div class="sn" id="e-s0">3</div><div class="sl" id="e-s0l">Active initiatives</div></div>
+      <div class="stat"><div class="sn" id="e-s1">1</div><div class="sl" id="e-s1l">PoC confirmed</div></div>
+      <div class="stat"><div class="sn" id="e-s2">17+</div><div class="sl" id="e-s2l">Vendors in evaluation across initiatives</div></div>
+      <div class="stat"><div class="sn" id="e-s3">6+</div><div class="sl" id="e-s3l">Network countries engaged</div></div>
+    </div>
+    <div class="tl-s"><div class="tl">
+      <div class="tl-line"></div><div class="tl-done"></div>
+      <div class="tl-step"><div class="dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tl-m" id="e-t0m">Feb 2026</div><div class="tl-e" id="e-t0e">RFI & vendor landscape</div></div>
+      <div class="tl-step"><div class="dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tl-m" id="e-t1m">Mar 2026</div><div class="tl-e" id="e-t1e">Requirements & demos</div></div>
+      <div class="tl-step"><div class="dot now"></div><div class="tl-m now" id="e-t2m">Apr 2026</div><div class="tl-e now" id="e-t2e">PoC setup & current process evaluation</div></div>
+      <div class="tl-step"><div class="dot fut"></div><div class="tl-m" id="e-t3m">May 2026</div><div class="tl-e" id="e-t3e">Equipment & network WGs</div></div>
+      <div class="tl-step"><div class="dot fut"></div><div class="tl-m" id="e-t4m">Aug 2026</div><div class="tl-e" id="e-t4e">PoC results & discovery playback</div></div>
+      <div class="tl-step"><div class="dot fut"></div><div class="tl-m" id="e-t5m">Q4 2026</div><div class="tl-e" id="e-t5e">Discovery playback & next steps</div></div>
+    </div></div>
   </div>
 </div>
 
-<div class="page" id="main-page">
+<div class="section fadein">
+  <div class="page">
+    <div class="sec-row">
+      <span class="sec-lbl">Active initiatives</span>
+      <span class="sec-hint">Select any card to explore</span>
+    </div>
+    <div class="grid">
 
-<!-- ══ HERO ══ -->
-<div class="hero">
-  <div class="hero-rule"></div>
-  <div class="hero-eyebrow">dnata Cargo · Innovation &amp; Digitalisation</div>
-  <h1 class="hero-title">Global innovation network</h1>
-  <p class="hero-sub">Initiatives status deck · April 2026 · 3 active workstreams</p>
+      <div class="col">
+        <div class="card" id="c0" onclick="tog(event,0)" style="--cc:var(--blue)">
+          <div class="c-stripe" style="background:var(--blue)"></div>
+          <div class="c-body">
+            <div class="c-top"><div class="c-ico" style="background:var(--blue-lt)"><svg viewBox="0 0 20 20" fill="none" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="6" width="14" height="10" rx="1.5"/><path d="M7 6V4.5M10 6V4.5M13 6V4.5M3 9.5h14"/></svg></div><div class="c-name" id="e-c0name">In-Motion Dimensioning/Weighing PoC</div></div>
+            <div class="c-desc" id="e-c0desc">Automated cargo dimensioning & weighing — CIND & RAVAS vendor-funded proof of concept</div>
+            <div class="p-row"><span class="p-lbl">Overall progress</span><span class="p-pct" id="pt0" style="color:var(--blue)">28%</span></div>
+            <div class="p-bar"><div class="p-fill" id="pf0" style="width:28%;background:var(--blue)"></div></div>
+            <div class="pills" id="e-c0pills"><span class="pill pa">Setup discussion in progress</span><span class="pill pg">PoC cost-free</span><span class="pill pi">Support from UAE to be discussed</span></div>
+          </div>
+          <div class="c-foot"><div class="c-date">Target completion <strong id="e-c0date">Aug 2026</strong></div><span class="chev">⌄</span></div>
+        </div>
+        <div class="exp" id="d0"><div class="exp-in"><div class="d-grid">
+          <div>
+            <div class="d-hd">Status & progress</div>
+            <div id="e-c0status">
+              <div class="si"><div class="sd a"></div><div class="st">PoC setup and process discussions actively in progress</div></div>
+              <div class="si"><div class="sd g"></div><div class="st">CIND + RAVAS confirmed: free 3-month PoC at UK — zero cost to dnata</div></div>
+              <div class="si"><div class="sd a"></div><div class="st">Equipment delivery target: May 2026</div></div>
+              <div class="si"><div class="sd i"></div><div class="st">KPI 1: Stated vs actual dimensions & weight accuracy ≥95%</div></div>
+              <div class="si"><div class="sd i"></div><div class="st">KPI 2: Scan speed ≤1 sec; OneCargo integration feasibility</div></div>
+              <div class="si"><div class="sd a"></div><div class="st">Requirements shared; working group cadence being established</div></div>
+            </div>
+            <div class="kpis">
+              <div class="kpi" style="border-top-color:var(--blue)"><div class="kv" id="e-c0k0">≥95%</div><div class="kl" id="e-c0k0l">Accuracy target</div></div>
+              <div class="kpi" style="border-top-color:var(--blue)"><div class="kv" id="e-c0k1">≤1 sec</div><div class="kl" id="e-c0k1l">Scan speed</div></div>
+              <div class="kpi" style="border-top-color:var(--blue)"><div class="kv" id="e-c0k2">3 mo.</div><div class="kl" id="e-c0k2l">PoC duration</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="d-hd">Network engagement</div>
+            <div class="chips"><div class="chip on"><div class="ndot" style="background:var(--green)"></div>UK — host station</div><div class="chip on"><div class="ndot" style="background:var(--amber)"></div>AU — watching results</div><div class="chip on"><div class="ndot" style="background:var(--amber)"></div>US — watching results</div><div class="chip"><div class="ndot" style="background:var(--slate)"></div>AE — initiative owner</div></div>
+            <div class="nxt" id="e-c0nxt"><strong>Next →</strong> Align KPIs & baseline processes before May equipment drop. Establish regular working group cadence.</div>
+          </div>
+        </div></div></div>
+      </div>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num" id="s0">3</div>
-      <div class="stat-lbl">Active initiatives</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" id="s1">1</div>
-      <div class="stat-lbl">PoC confirmed</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" id="s2">17+</div>
-      <div class="stat-lbl">Vendors in evaluation across initiatives</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" id="s3">6+</div>
-      <div class="stat-lbl">Network countries engaged</div>
-    </div>
-  </div>
+      <div class="col">
+        <div class="card" id="c1" onclick="tog(event,1)" style="--cc:var(--teal)">
+          <div class="c-stripe" style="background:var(--teal)"></div>
+          <div class="c-body">
+            <div class="c-top"><div class="c-ico" style="background:var(--teal-lt)"><svg viewBox="0 0 20 20" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round"><path d="M3 15l5-5 3.5 2.5L17 5"/><circle cx="3" cy="15" r="1.4" fill="var(--teal)" stroke="none"/><circle cx="8" cy="10" r="1.4" fill="var(--teal)" stroke="none"/><circle cx="11.5" cy="12.5" r="1.4" fill="var(--teal)" stroke="none"/><circle cx="17" cy="5" r="1.4" fill="var(--teal)" stroke="none"/></svg></div><div class="c-name" id="e-c1name">Market intelligence</div></div>
+            <div class="c-desc" id="e-c1desc">Cargo data platform evaluation — CargoIS, WorldACD, Aevea & Accenture in scope</div>
+            <div class="p-row"><span class="p-lbl">Overall progress</span><span class="p-pct" id="pt1" style="color:var(--teal)">20%</span></div>
+            <div class="p-bar"><div class="p-fill" id="pf1" style="width:20%;background:var(--teal)"></div></div>
+            <div class="pills"><span class="pill pa">Requirements phase</span><span class="pill pg">6 vendors scoped</span><span class="pill pg">Use cases defined</span></div>
+          </div>
+          <div class="c-foot"><div class="c-date">Platform decision <strong id="e-c1date">Q4 2026</strong></div><span class="chev">⌄</span></div>
+        </div>
+        <div class="exp" id="d1"><div class="exp-in"><div class="d-grid">
+          <div>
+            <div class="d-hd">Status & progress</div>
+            <div class="si"><div class="sd a"></div><div class="st">Functional requirements gathering underway — UK & UAE teams engaged</div></div>
+            <div class="si"><div class="sd a"></div><div class="st">CargoIS (IATA/CASS subscription) — evaluation & commercial discussion in progress</div></div>
+            <div class="si"><div class="sd a"></div><div class="st">WorldACD, Accenture & Aevea — active vendor discussions underway</div></div>
+            <div class="si"><div class="sd i"></div><div class="st">Use cases: trade lane demand, capacity planning, pricing optimisation, strategic insight</div></div>
+            <div class="si"><div class="sd i"></div><div class="st">Integration scope: iCargo & OneCargo as primary internal data sources</div></div>
+            <div class="kpis">
+              <div class="kpi" style="border-top-color:var(--teal)"><div class="kv">4</div><div class="kl">Vendors scoped</div></div>
+              <div class="kpi" style="border-top-color:var(--teal)"><div class="kv">7+</div><div class="kl">Use cases defined</div></div>
+              <div class="kpi" style="border-top-color:var(--teal)"><div class="kv">2</div><div class="kl">Internal sources</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="d-hd">Network engagement</div>
+            <div class="chips"><div class="chip on"><div class="ndot" style="background:var(--green)"></div>UK — requirements input</div><div class="chip on"><div class="ndot" style="background:var(--green)"></div>AE — requirements owner</div><div class="chip"><div class="ndot" style="background:var(--slate)"></div>Network — post-baseline</div></div>
+            <div class="nxt"><strong>Next →</strong> Finalise requirements baseline. Shortlist intelligence platform vendor for pilot. Align on IATA CargoIS commercial model.</div>
+          </div>
+        </div></div></div>
+      </div>
 
-  <div class="timeline">
-    <div class="tl-spine"></div>
-    <div class="tl-spine-done"></div>
-    <div class="tl-step">
-      <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
-      <div class="tl-lbl">Feb 2026</div>
-      <div class="tl-ev">RFI &amp; vendor landscape</div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
-      <div class="tl-lbl">Mar 2026</div>
-      <div class="tl-ev">Requirements &amp; demos</div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-dot now"></div>
-      <div class="tl-lbl now">Apr 2026</div>
-      <div class="tl-ev now">PoC setup &amp; current process evaluation</div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-dot future"></div>
-      <div class="tl-lbl">May 2026</div>
-      <div class="tl-ev">Equipment &amp; network WGs</div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-dot future"></div>
-      <div class="tl-lbl">Aug 2026</div>
-      <div class="tl-ev">PoC results &amp; discovery playback</div>
-    </div>
-    <div class="tl-step">
-      <div class="tl-dot future"></div>
-      <div class="tl-lbl">Q4 2026</div>
-      <div class="tl-ev">Discovery playback &amp; next steps</div>
+      <div class="col">
+        <div class="card" id="c2" onclick="tog(event,2)" style="--cc:var(--purple)">
+          <div class="c-stripe" style="background:var(--purple)"></div>
+          <div class="c-body">
+            <div class="c-top"><div class="c-ico" style="background:var(--purple-lt)"><svg viewBox="0 0 20 20" fill="none" stroke="var(--purple)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="14" height="13" rx="1.5"/><path d="M7 4V2.5M13 4V2.5M3 9h14M6.5 12.5h2M10.5 12.5h3M6.5 15h4"/></svg></div><div class="c-name" id="e-c2name">ADM / TMS procurement</div></div>
+            <div class="c-desc" id="e-c2desc">Appointment & Traffic Management RFI — desktop evaluation & demos underway</div>
+            <div class="p-row"><span class="p-lbl">Overall progress</span><span class="p-pct" id="pt2" style="color:var(--purple)">35%</span></div>
+            <div class="p-bar"><div class="p-fill" id="pf2" style="width:35%;background:var(--purple)"></div></div>
+            <div class="pills"><span class="pill pa">RFI demos live</span><span class="pill pp">5 vendors</span><span class="pill pi">Network req. next</span></div>
+          </div>
+          <div class="c-foot"><div class="c-date">Vendor decision <strong id="e-c2date">Q1 2027</strong></div><span class="chev">⌄</span></div>
+        </div>
+        <div class="exp" id="d2"><div class="exp-in"><div class="d-grid">
+          <div>
+            <div class="d-hd">Status & progress</div>
+            <div class="si"><div class="sd g"></div><div class="st">UAE requirements defined; RFI demos actively in progress</div></div>
+            <div class="si"><div class="sd a"></div><div class="st">Vendors in demo phase: EPG, Nallian, Cargoclix, IBS, Blue Yonder</div></div>
+            <div class="si"><div class="sd i"></div><div class="st">Network requirements to be collected & shared with all 5 vendors for feedback</div></div>
+            <div class="si"><div class="sd i"></div><div class="st">Vendor demo recordings available to circulate to network stations on request</div></div>
+            <div class="si"><div class="sd a"></div><div class="st">Flag 1: Cargoclix data residency — Germany-hosted, no GCC/UAE option confirmed</div></div>
+            <div class="si"><div class="sd a"></div><div class="st">Flag 2: IBS/OneCargo CMS dependency — co-development vs best-of-breed decision required</div></div>
+            <div class="kpis">
+              <div class="kpi" style="border-top-color:var(--purple)"><div class="kv">8</div><div class="kl">Desktop evaluation completed</div></div>
+              <div class="kpi" style="border-top-color:var(--purple)"><div class="kv">5</div><div class="kl">Vendor demos in progress</div></div>
+              <div class="kpi" style="border-top-color:var(--purple)"><div class="kv">Q1 '27</div><div class="kl">Decision target</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="d-hd">Network engagement</div>
+            <div class="chips"><div class="chip on"><div class="ndot" style="background:var(--green)"></div>AE — RFI owner</div><div class="chip on"><div class="ndot" style="background:var(--amber)"></div>UK — requirements next</div><div class="chip on"><div class="ndot" style="background:var(--amber)"></div>Additional stations — requirements next</div><div class="chip on"><div class="ndot" style="background:var(--amber)"></div>Tender/RFT requirements refinement to be completed</div></div>
+            <div class="nxt"><strong>Next →</strong> Collect network station requirements. Circulate vendor demo recordings. Resolve Cargoclix data residency flag. Clarify IBS co-development vs best-of-breed architecture decision.</div>
+          </div>
+        </div></div></div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- ══ CARDS HEADER ══ -->
-<div class="cards-row">
-  <span class="cards-row-lbl">Active initiatives</span>
-  <span class="cards-row-hint">Select any card to explore</span>
-</div>
-
-<div class="cards">
-
-  <!-- CARD 1: DIMENSIONING -->
-  <div class="card-wrap">
-    <div class="card" id="c0" onclick="toggle(event,0)" style="--card-accent:var(--col-blue)">
-      <div class="card-stripe" style="background:var(--col-blue)"></div>
-      <div class="card-body">
-        <div class="card-icon-row">
-          <div class="card-icon" style="background:var(--col-blue-lt)">
-            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-blue)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="6" width="14" height="10" rx="1.5"></rect><path d="M7 6V4.5M10 6V4.5M13 6V4.5M3 9.5h14"></path></svg>
-          </div>
-          <div class="card-name">In-Motion Dimensioning/Weighing PoC</div>
-        </div>
-        <div class="card-desc">Automated cargo dimensioning &amp; weighing — CIND &amp; RAVAS vendor-funded proof of concept</div>
-        <div class="prog-header">
-          <span class="prog-lbl">Overall progress</span>
-          <span class="prog-pct" style="color:var(--col-blue)">28%</span>
-        </div>
-        <div class="prog-track"><div class="prog-fill" id="pf0" style="width:28%;background:var(--col-blue)"></div></div>
-        <div class="pills">
-          <span class="pill pill-amber">Setup discussion in progress</span>
-          <span class="pill pill-green">PoC cost-free</span>
-          <span class="pill pill-info">Support from UAE to be discussed</span>
-        </div>
-      </div>
-      <div class="card-foot">
-        <div class="card-completion">Target completion <strong>Aug 2026</strong></div>
-        <span class="chevron">⌄</span>
-      </div>
+<div class="sum-s fadein">
+  <div class="page">
+    <div class="sum-grid">
+      <div class="summ" style="border-left-color:var(--blue)"><div class="sname" id="e-sum0name">Dimensioning PoC</div><div class="sstat" id="e-sum0stat">Setup in progress · Aug 2026</div><span class="sarr">Next →</span><div class="snxt" id="e-sum0nxt">Align KPIs & baseline before May equipment drop</div></div>
+      <div class="summ" style="border-left-color:var(--teal)"><div class="sname" id="e-sum1name">Market intelligence</div><div class="sstat" id="e-sum1stat">Requirements gathering · Q4 2026</div><span class="sarr">Next →</span><div class="snxt" id="e-sum1nxt">Finalise requirements; shortlist intelligence platform vendor</div></div>
+      <div class="summ" style="border-left-color:var(--purple)"><div class="sname" id="e-sum2name">ADM / TMS procurement</div><div class="sstat" id="e-sum2stat">RFI demos active · Q1 2027</div><span class="sarr">Next →</span><div class="snxt" id="e-sum2nxt">Collect network requirements; finalise vendors for RFT & update functional requirements</div></div>
     </div>
-    <div class="detail" id="d0">
-      <div class="detail-inner">
-        <div class="detail-cols">
-          <div>
-            <div class="detail-head">Status &amp; progress</div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">PoC setup and process discussions actively in progress</div></div>
-            <div class="si"><div class="si-dot green"></div><div class="si-text">CIND + RAVAS confirmed: free 3-month PoC at UK — zero cost to dnata</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Equipment delivery target: May 2026</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">KPI 1: Stated vs actual dimensions &amp; weight accuracy ≥95%</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">KPI 2: Scan speed ≤1 sec; OneCargo integration feasibility</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Requirements shared with network; working group cadence being established</div></div>
-            <div class="kpi-trio">
-              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val">≥95%</div><div class="kpi-lbl">Accuracy target</div></div>
-              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val">≤1 sec</div><div class="kpi-lbl">Scan speed</div></div>
-              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val">3 mo.</div><div class="kpi-lbl">PoC duration</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="detail-head">Network engagement</div>
-            <div class="net-chips">
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>UK — host station</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>AU — watching results</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>US — watching results</span></div>
-              <div class="net-chip"><div class="net-dot" style="background:var(--col-slate)"></div><span>AE — initiative owner</span></div>
-            </div>
-            <div class="next-box"><strong>Next →</strong> Align KPIs &amp; baseline processes before May equipment drop. Establish regular working group cadence with network stations.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 2: MARKET INTELLIGENCE -->
-  <div class="card-wrap">
-    <div class="card" id="c1" onclick="toggle(event,1)" style="--card-accent:var(--col-teal)">
-      <div class="card-stripe" style="background:var(--col-teal)"></div>
-      <div class="card-body">
-        <div class="card-icon-row">
-          <div class="card-icon" style="background:var(--col-teal-lt)">
-            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-teal)" stroke-width="1.6" stroke-linecap="round"><path d="M3 15l5-5 3.5 2.5L17 5"></path><circle cx="3" cy="15" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="8" cy="10" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="11.5" cy="12.5" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="17" cy="5" r="1.4" fill="var(--col-teal)" stroke="none"></circle></svg>
-          </div>
-          <div class="card-name">Market intelligence</div>
-        </div>
-        <div class="card-desc">Cargo data platform evaluation — CargoIS, WorldACD, Aevea &amp; Accenture in scope</div>
-        <div class="prog-header">
-          <span class="prog-lbl">Overall progress</span>
-          <span class="prog-pct" style="color:var(--col-teal)">20%</span>
-        </div>
-        <div class="prog-track"><div class="prog-fill" id="pf1" style="width:20%;background:var(--col-teal)"></div></div>
-        <div class="pills">
-          <span class="pill pill-amber">Requirements phase</span>
-          <span class="pill pill-green">6 vendors scoped</span>
-          <span class="pill pill-green">Use cases defined</span>
-        </div>
-      </div>
-      <div class="card-foot">
-        <div class="card-completion">Platform decision <strong>Q4 2026</strong></div>
-        <span class="chevron">⌄</span>
-      </div>
-    </div>
-    <div class="detail" id="d1">
-      <div class="detail-inner">
-        <div class="detail-cols">
-          <div>
-            <div class="detail-head">Status &amp; progress</div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Functional requirements gathering underway — UK &amp; UAE teams engaged</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">CargoIS (IATA/CASS subscription) — evaluation &amp; commercial discussion in progress</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">WorldACD, Accenture &amp; Aevea — active vendor discussions underway</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Use cases: trade lane demand, capacity planning, pricing optimisation, strategic insight</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Integration scope: iCargo &amp; OneCargo as primary internal data sources</div></div>
-            <div class="kpi-trio">
-              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val">4</div><div class="kpi-lbl">Vendors scoped</div></div>
-              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val">7+</div><div class="kpi-lbl">Use cases defined</div></div>
-              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val">2</div><div class="kpi-lbl">Internal sources</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="detail-head">Network engagement</div>
-            <div class="net-chips">
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>UK — requirements input</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>AE — requirements owner</span></div>
-              <div class="net-chip"><div class="net-dot" style="background:var(--col-slate)"></div><span>Network — post-baseline</span></div>
-            </div>
-            <div class="next-box"><strong>Next →</strong> Finalise requirements baseline. Shortlist intelligence platform vendor for pilot. Align on IATA CargoIS commercial model.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 3: ADM/TMS -->
-  <div class="card-wrap">
-    <div class="card" id="c2" onclick="toggle(event,2)" style="--card-accent:var(--col-purple)">
-      <div class="card-stripe" style="background:var(--col-purple)"></div>
-      <div class="card-body">
-        <div class="card-icon-row">
-          <div class="card-icon" style="background:var(--col-purple-lt)">
-            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-purple)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="14" height="13" rx="1.5"></rect><path d="M7 4V2.5M13 4V2.5M3 9h14M6.5 12.5h2M10.5 12.5h3M6.5 15h4"></path></svg>
-          </div>
-          <div class="card-name">ADM / TMS procurement</div>
-        </div>
-        <div class="card-desc">Appointment &amp; Traffic Management RFI — desktop evaluation &amp; demos underway.&nbsp;</div>
-        <div class="prog-header">
-          <span class="prog-lbl">Overall progress</span>
-          <span class="prog-pct" style="color:var(--col-purple)">35%</span>
-        </div>
-        <div class="prog-track"><div class="prog-fill" id="pf2" style="width:35%;background:var(--col-purple)"></div></div>
-        <div class="pills">
-          <span class="pill pill-amber">RFI demos live</span>
-          <span class="pill pill-purple">5 vendors</span>
-          <span class="pill pill-info">Network req. next</span>
-        </div>
-      </div>
-      <div class="card-foot">
-        <div class="card-completion">Vendor decision <strong>Q1 2027</strong></div>
-        <span class="chevron">⌄</span>
-      </div>
-    </div>
-    <div class="detail" id="d2">
-      <div class="detail-inner">
-        <div class="detail-cols">
-          <div>
-            <div class="detail-head">Status &amp; progress</div>
-            <div class="si"><div class="si-dot green"></div><div class="si-text">UAE requirements defined; RFI demos actively in progress</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Vendors in demo phase: EPG, Nallian, Cargoclix, IBS, Blue Yonder</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Network requirements to be collected &amp; shared with all 5 vendors for feedback</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Vendor demo recordings available to circulate to network stations on request</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Flag 1: Cargoclix data residency — Germany-hosted, no GCC/UAE option confirmed</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Flag 2: IBS/OneCargo CMS dependency — co-development vs best-of-breed decision required</div></div>
-            <div class="kpi-trio">
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val">8</div><div class="kpi-lbl">Vendors desktop evaluation completde</div></div>
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val">5</div><div class="kpi-lbl">Vendor demo in progress</div></div>
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val">Q1 '27</div><div class="kpi-lbl">Decision target</div></div>
-            </div>
-          </div>
-          <div>
-            <div class="detail-head">Network engagement</div>
-            <div class="net-chips">
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>AE — RFI owner</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>UK — requirements next</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>Additional stations — requirements next</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>Tender/ RFT functional requirements refinement to&nbsp; be completed</span></div>
-            </div>
-            <div class="next-box"><strong>Next →</strong> Collect network station requirements. Circulate vendor demo recordings. Resolve Cargoclix data residency flag. Clarify IBS co-development vs best-of-breed architecture decision.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /cards -->
-
-<!-- ══ SUMMARY ══ -->
-<div class="summary">
-  <div class="summ" style="border-left-color:var(--col-blue)">
-    <div class="summ-name">Dimensioning PoC</div>
-    <div class="summ-status">Setup in progress · Aug 2026</div>
-    <span class="summ-arrow">Next →</span>
-    <div class="summ-next">Align KPIs &amp; baseline before May equipment drop</div>
-  </div>
-  <div class="summ" style="border-left-color:var(--col-teal)">
-    <div class="summ-name">Market intelligence</div>
-    <div class="summ-status">Requirements gathering · Q4 2026</div>
-    <span class="summ-arrow">Next →</span>
-    <div class="summ-next">Finalise requirements; shortlist intelligence platform vendor</div>
-  </div>
-  <div class="summ" style="border-left-color:var(--col-purple)">
-    <div class="summ-name">ADM / TMS procurement</div>
-    <div class="summ-status">RFI demos active · Q1 2027</div>
-    <span class="summ-arrow">Next →</span>
-    <div class="summ-next">Collect network requirements; finalise vendors for RFT &amp; update functional requirements&nbsp;</div>
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
-<div class="footer">
-  <div class="footer-left">
-    <div class="footer-dot"></div>
-    <span>Innovation &amp; Digitalisation · dnata Cargo · Confidential</span>
+<div class="footer fadein">
+  <div class="page">
+    <div class="f-row">
+      <div class="f-l"><div class="fdot"></div><span id="e-footer">Innovation & Digitalisation · dnata Cargo · Confidential</span></div>
+      <div class="f-r" id="e-footerr">Updated April 2026</div>
+    </div>
   </div>
-  <div class="footer-right">Updated April 2026</div>
 </div>
 
-</div><!-- /page -->
-
+</div><!-- /app -->
 
 <script>
-// ── CARD TOGGLE (ignores clicks on editable children) ──
-const openState = [false, false, false];
-function toggle(e, i) {
-  if (e.target.isContentEditable || e.target.closest('[]')) return;
-  openState[i] = !openState[i];
-  document.getElementById('c' + i).classList.toggle('open', openState[i]);
-  document.getElementById('d' + i).classList.toggle('open', openState[i]);
+const os=[false,false,false];
+function tog(e,i){
+  os[i]=!os[i];
+  document.getElementById('c'+i).classList.toggle('open',os[i]);
+  document.getElementById('d'+i).classList.toggle('open',os[i]);
 }
 
-// ── LIVE PROGRESS BAR SYNC ──
-// Watches the % text in each card and keeps the bar in sync
-['pct0','pct1','pct2'].forEach((_, i) => {
-  const pctEl = document.getElementById('c' + i)?.querySelector('.prog-pct');
-  const barEl = document.getElementById('pf' + i);
-  if (!pctEl || !barEl) return;
-  const obs = new MutationObserver(() => {
-    const val = parseInt(pctEl.textContent);
-    if (!isNaN(val)) barEl.style.width = Math.min(Math.max(val, 0), 100) + '%';
-  });
-  obs.observe(pctEl, { characterData: true, childList: true, subtree: true });
-});
+// Load from DB and patch named elements
+async function load(){
+  try{
+    const r=await fetch('/api/load');
+    const d=await r.json();
+    if(d.ok&&d.content){
+      const saved=JSON.parse(d.content);
+      Object.entries(saved).forEach(([id,val])=>{
+        const el=document.getElementById(id);
+        if(el)el.innerHTML=val;
+      });
+      // Sync progress bars
+      [0,1,2].forEach(i=>{
+        const p=document.getElementById('pt'+i),b=document.getElementById('pf'+i);
+        if(p&&b){const v=parseInt(p.textContent);if(!isNaN(v))b.style.width=Math.min(Math.max(v,0),100)+'%';}
+      });
+    }
+  }catch(e){console.log('Using default content');}
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+}
 
-
+load();
 </script>
-
-
-</body></html>
+</body>
+</html>

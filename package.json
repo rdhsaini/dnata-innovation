@@ -1,0 +1,8 @@
+{
+  "name": "dnata-innovation",
+  "version": "1.0.0",
+  "description": "dnata Cargo Innovation Network Deck",
+  "dependencies": {
+    "@vercel/kv": "^1.0.0"
+  }
+}
