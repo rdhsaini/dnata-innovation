@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)file:///C:/Users/S492255/Downloads/dnata_innovation_editable.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>dnata Cargo · Global Innovation Network · April 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./dnata Cargo · Global Innovation Network · 12 April 2026_files/css2" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --col-primary:   #0D1B3E;
@@ -47,51 +47,41 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── EDIT MODE TOOLBAR ── */
+/* ── TOOLBAR ── */
 #toolbar {
   position: sticky; top: 0; z-index: 1000;
   background: var(--col-primary);
-  padding: 0.6rem 1.75rem;
+  padding: 0.6rem 1.25rem;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem; flex-wrap: wrap;
 }
-.tb-left { display: flex; align-items: center; gap: 10px; }
+.tb-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .tb-badge {
-  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--col-gold);
   background: rgba(201,168,76,0.15);
   border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 99px; padding: 3px 10px;
+  border-radius: 99px; padding: 3px 10px; white-space: nowrap;
 }
-.tb-hint {
-  font-size: 0.72rem; color: rgba(255,255,255,0.5);
-}
+.tb-hint { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
 .tb-hint span { color: rgba(255,255,255,0.8); }
-.tb-right { display: flex; gap: 8px; align-items: center; }
-
+.tb-right { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
 .btn {
   font-family: var(--font-main);
-  font-size: 0.72rem; font-weight: 500;
-  padding: 6px 14px; border-radius: 8px; cursor: pointer;
-  border: none; transition: opacity 0.15s, transform 0.1s;
+  font-size: 0.7rem; font-weight: 500;
+  padding: 6px 12px; border-radius: 8px; cursor: pointer;
+  border: none; transition: opacity 0.15s, transform 0.1s; white-space: nowrap;
 }
 .btn:active { transform: scale(0.97); }
-.btn-ghost {
-  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
-}
+.btn-ghost { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
 .btn-ghost:hover { background: rgba(255,255,255,0.18); }
-.btn-primary {
-  background: var(--col-gold); color: var(--col-primary);
-  font-weight: 600;
-}
+.btn-primary { background: var(--col-gold); color: var(--col-primary); font-weight: 600; }
 .btn-primary:hover { opacity: 0.9; }
 
-/* ── EDITABLE ELEMENTS ── */
+/* ── EDITABLE ── */
 [contenteditable="true"] {
-  outline: none;
-  border-radius: 4px;
-  transition: background 0.15s, box-shadow 0.15s;
-  cursor: text;
+  outline: none; border-radius: 4px;
+  transition: background 0.15s, box-shadow 0.15s; cursor: text;
 }
 [contenteditable="true"]:hover {
   background: rgba(201,168,76,0.08);
@@ -101,20 +91,16 @@ body {
   background: rgba(201,168,76,0.12);
   box-shadow: 0 0 0 2px rgba(201,168,76,0.5);
 }
-
-/* Subtle edit indicator dot on hover */
 [contenteditable="true"]:hover::after {
-  content: ' ✎';
-  font-size: 0.7em;
-  opacity: 0.5;
-  pointer-events: none;
+  content: ' ✎'; font-size: 0.7em; opacity: 0.45; pointer-events: none;
 }
 
-/* ── LAYOUT ── */
+/* ── PAGE ── */
 .page {
-  max-width: 960px;
+  width: 100%;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 0 1.75rem 4rem;
+  padding: 0 1.25rem 4rem;
 }
 
 /* ── HERO ── */
@@ -122,79 +108,98 @@ body {
   background: var(--col-surface);
   border: 1px solid var(--col-border);
   border-radius: 16px;
-  padding: 2.25rem 2rem 2rem;
-  margin: 1.5rem 0 1.25rem;
+  padding: 2rem 1.75rem 1.75rem;
+  margin: 1.25rem 0 1.1rem;
   opacity: 0; animation: up 0.55s ease 0.05s forwards;
 }
-.hero-rule { width: 36px; height: 3px; background: var(--col-primary); border-radius: 2px; margin-bottom: 1.1rem; }
-.hero-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--col-muted); margin-bottom: 0.4rem; }
-.hero-title { font-size: 2rem; font-weight: 600; color: var(--col-primary); line-height: 1.15; margin-bottom: 0.3rem; }
-.hero-sub { font-size: 0.82rem; color: var(--col-muted); margin-bottom: 2rem; }
+.hero-rule { width: 36px; height: 3px; background: var(--col-primary); border-radius: 2px; margin-bottom: 1rem; }
+.hero-eyebrow { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--col-muted); margin-bottom: 0.4rem; }
+.hero-title { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 600; color: var(--col-primary); line-height: 1.15; margin-bottom: 0.3rem; }
+.hero-sub { font-size: 0.82rem; color: var(--col-muted); margin-bottom: 1.75rem; }
 
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 2rem; }
-.stat { background: var(--col-bg); border: 1px solid var(--col-border); border-radius: 10px; padding: 1.1rem; }
-.stat-num { font-size: 2rem; font-weight: 600; color: var(--col-primary); line-height: 1; margin-bottom: 0.3rem; }
-.stat-lbl { font-size: 0.72rem; color: var(--col-muted); line-height: 1.4; }
+/* ── STATS ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-bottom: 1.75rem;
+}
+.stat { background: var(--col-bg); border: 1px solid var(--col-border); border-radius: 10px; padding: 1rem; }
+.stat-num { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; color: var(--col-primary); line-height: 1; margin-bottom: 0.3rem; }
+.stat-lbl { font-size: 0.7rem; color: var(--col-muted); line-height: 1.4; }
 
-/* Timeline */
-.timeline { display: flex; align-items: flex-start; position: relative; }
-.tl-spine { position: absolute; top: 13px; left: 0; right: 0; height: 1px; background: var(--col-border); }
+/* ── TIMELINE ── */
+.timeline { display: flex; align-items: flex-start; position: relative; overflow-x: auto; padding-bottom: 0.5rem; }
+.tl-spine { position: absolute; top: 13px; left: 0; right: 0; height: 1px; background: var(--col-border); min-width: 480px; }
 .tl-spine-done { position: absolute; top: 13px; left: 0; height: 1px; background: var(--col-tl-done); width: 28%; }
-.tl-step { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
+.tl-step { flex: 1; min-width: 80px; display: flex; flex-direction: column; align-items: center; position: relative; }
 .tl-dot { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; margin-bottom: 8px; transition: transform 0.2s; flex-shrink: 0; }
 .tl-dot:hover { transform: scale(1.12); }
 .tl-dot.done { background: var(--col-tl-done); box-shadow: 0 0 0 4px rgba(26,122,69,0.12); }
-.tl-dot.now { background: var(--col-tl-now); box-shadow: 0 0 0 5px rgba(201,168,76,0.2), 0 0 0 10px rgba(201,168,76,0.07); animation: pulse 2.2s ease infinite; }
+.tl-dot.now  { background: var(--col-tl-now); box-shadow: 0 0 0 5px rgba(201,168,76,0.2), 0 0 0 10px rgba(201,168,76,0.07); animation: pulse 2.2s ease infinite; }
 .tl-dot.future { background: var(--col-surface); border: 1.5px solid var(--col-tl-future); }
 .tl-dot svg { width: 12px; height: 12px; }
-.tl-lbl { font-size: 0.65rem; color: var(--col-muted); margin-bottom: 2px; text-align: center; }
+.tl-lbl { font-size: 0.62rem; color: var(--col-muted); margin-bottom: 2px; text-align: center; }
 .tl-lbl.now { color: var(--col-gold); font-weight: 600; }
-.tl-ev { font-size: 0.68rem; color: var(--col-muted); text-align: center; line-height: 1.35; }
+.tl-ev { font-size: 0.65rem; color: var(--col-muted); text-align: center; line-height: 1.35; padding: 0 4px; }
 .tl-ev.now { color: var(--col-text); font-weight: 500; }
 
-/* ── CARDS ── */
-.cards-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; opacity: 0; animation: up 0.55s ease 0.3s forwards; }
-.cards-row-lbl { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--col-muted); }
-.cards-row-hint { font-size: 0.72rem; color: var(--col-muted); }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-bottom: 1.5rem; }
+/* ── CARDS SECTION ── */
+.cards-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 0.75rem;
+  opacity: 0; animation: up 0.55s ease 0.3s forwards;
+}
+.cards-row-lbl { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--col-muted); }
+.cards-row-hint { font-size: 0.7rem; color: var(--col-muted); }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; margin-bottom: 1.25rem;
+}
 .card-wrap { display: flex; flex-direction: column; }
-.card { background: var(--col-surface); border: 1px solid var(--col-border); border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s; opacity: 0; }
+.card {
+  background: var(--col-surface); border: 1px solid var(--col-border);
+  border-radius: 14px; overflow: hidden; cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+  opacity: 0;
+}
 .card:nth-child(1) { animation: up 0.55s ease 0.38s forwards; }
 .card:nth-child(2) { animation: up 0.55s ease 0.48s forwards; }
 .card:nth-child(3) { animation: up 0.55s ease 0.58s forwards; }
 .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
 .card.open { border-color: var(--card-accent, var(--col-border)); box-shadow: 0 0 0 3px rgba(0,0,0,0.04); }
 .card-stripe { height: 3px; }
-.card-body { padding: 1.3rem; }
-.card-icon-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
-.card-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.card-icon svg { width: 19px; height: 19px; }
-.card-name { font-size: 1rem; font-weight: 600; color: var(--col-primary); line-height: 1.2; }
-.card-desc { font-size: 0.75rem; color: var(--col-muted); line-height: 1.5; margin-bottom: 1rem; }
+.card-body { padding: 1.2rem; }
+.card-icon-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.7rem; }
+.card-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-icon svg { width: 18px; height: 18px; }
+.card-name { font-size: 0.92rem; font-weight: 600; color: var(--col-primary); line-height: 1.25; }
+.card-desc { font-size: 0.73rem; color: var(--col-muted); line-height: 1.5; margin-bottom: 0.9rem; }
 .prog-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
-.prog-lbl { font-size: 0.72rem; color: var(--col-muted); }
-.prog-pct { font-size: 0.72rem; font-weight: 600; }
-.prog-track { height: 4px; background: var(--col-border); border-radius: 2px; overflow: hidden; margin-bottom: 1rem; }
+.prog-lbl { font-size: 0.7rem; color: var(--col-muted); }
+.prog-pct { font-size: 0.7rem; font-weight: 600; }
+.prog-track { height: 4px; background: var(--col-border); border-radius: 2px; overflow: hidden; margin-bottom: 0.9rem; }
 .prog-fill { height: 100%; border-radius: 2px; }
-.pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
-.pill { font-size: 0.66rem; font-weight: 500; padding: 3px 9px; border-radius: 99px; border: 1px solid transparent; }
+.pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.9rem; }
+.pill { font-size: 0.63rem; font-weight: 500; padding: 3px 8px; border-radius: 99px; border: 1px solid transparent; }
 .pill-amber  { background: var(--col-amber-lt);  color: var(--col-amber);  border-color: #f3d08a; }
 .pill-green  { background: var(--col-green-lt);  color: var(--col-green);  border-color: #a3dbb9; }
 .pill-info   { background: var(--col-info-lt);   color: var(--col-info);   border-color: #a0caef; }
 .pill-slate  { background: var(--col-slate-lt);  color: var(--col-slate);  border-color: #c8d3e0; }
 .pill-purple { background: var(--col-purple-lt); color: var(--col-purple); border-color: #c5aeee; }
-.card-foot { border-top: 1px solid var(--col-border); padding: 0.75rem 1.3rem; display: flex; align-items: center; justify-content: space-between; }
-.card-completion { font-size: 0.72rem; color: var(--col-muted); }
+.card-foot { border-top: 1px solid var(--col-border); padding: 0.7rem 1.2rem; display: flex; align-items: center; justify-content: space-between; }
+.card-completion { font-size: 0.7rem; color: var(--col-muted); }
 .card-completion strong { color: var(--col-primary); font-weight: 600; }
-.chevron { font-size: 1.1rem; color: var(--col-muted); transition: transform 0.22s; display: inline-block; line-height: 1; pointer-events: none; }
+.chevron { font-size: 1rem; color: var(--col-muted); transition: transform 0.22s; display: inline-block; line-height: 1; pointer-events: none; }
 .card.open .chevron { transform: rotate(180deg); }
 
 /* ── DETAIL PANELS ── */
 .detail { max-height: 0; overflow: hidden; transition: max-height 0.42s ease; }
-.detail.open { max-height: 1400px; }
-.detail-inner { background: var(--col-bg); border: 1px solid var(--col-border); border-top: none; border-radius: 0 0 14px 14px; padding: 1.3rem; margin-top: -1px; }
-.detail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.detail-head { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--col-muted); margin-bottom: 0.85rem; }
+.detail.open { max-height: 1600px; }
+.detail-inner { background: var(--col-bg); border: 1px solid var(--col-border); border-top: none; border-radius: 0 0 14px 14px; padding: 1.2rem; margin-top: -1px; }
+.detail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.detail-head { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--col-muted); margin-bottom: 0.8rem; }
 .si { display: flex; gap: 9px; align-items: flex-start; margin-bottom: 8px; }
 .si-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
 .si-dot.amber  { background: var(--col-amber); }
@@ -202,36 +207,46 @@ body {
 .si-dot.info   { background: var(--col-info); }
 .si-dot.purple { background: var(--col-purple); }
 .si-dot.slate  { background: var(--col-slate); }
-.si-text { font-size: 0.78rem; color: var(--col-text); line-height: 1.5; }
-.kpi-trio { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 1rem 0; }
-.kpi { background: var(--col-surface); border: 1px solid var(--col-border); border-radius: 10px; padding: 0.75rem; border-top: 3px solid transparent; }
-.kpi-val { font-size: 1.25rem; font-weight: 600; color: var(--col-primary); margin-bottom: 2px; }
-.kpi-lbl { font-size: 0.66rem; color: var(--col-muted); line-height: 1.35; }
-.net-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
-.net-chip { font-size: 0.72rem; padding: 5px 11px; border-radius: 99px; border: 1px solid var(--col-border); color: var(--col-muted); display: flex; align-items: center; gap: 5px; }
+.si-text { font-size: 0.76rem; color: var(--col-text); line-height: 1.5; }
+.kpi-trio { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin: 0.9rem 0; }
+.kpi { background: var(--col-surface); border: 1px solid var(--col-border); border-radius: 10px; padding: 0.7rem; border-top: 3px solid transparent; }
+.kpi-val { font-size: 1.15rem; font-weight: 600; color: var(--col-primary); margin-bottom: 2px; }
+.kpi-lbl { font-size: 0.63rem; color: var(--col-muted); line-height: 1.35; }
+.net-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.9rem; }
+.net-chip { font-size: 0.7rem; padding: 4px 10px; border-radius: 99px; border: 1px solid var(--col-border); color: var(--col-muted); display: flex; align-items: center; gap: 5px; }
 .net-chip.on { border-color: #94A3B8; color: var(--col-text); font-weight: 500; }
 .net-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.next-box { background: var(--col-surface); border: 1px solid var(--col-border); border-left: 3px solid var(--col-gold); border-radius: 0 8px 8px 0; padding: 0.85rem 1rem; font-size: 0.78rem; color: var(--col-text); line-height: 1.55; }
+.next-box { background: var(--col-surface); border: 1px solid var(--col-border); border-left: 3px solid var(--col-gold); border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; font-size: 0.76rem; color: var(--col-text); line-height: 1.55; }
 .next-box strong { color: var(--col-gold); font-weight: 600; }
 
 /* ── SUMMARY ── */
-.summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--col-border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; opacity: 0; animation: up 0.55s ease 0.72s forwards; }
-.summ { background: var(--col-surface); padding: 1.2rem 1.3rem; border-left: 3px solid transparent; transition: background 0.18s; }
+.summary {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--col-border); border-radius: 12px;
+  overflow: hidden; margin-bottom: 1.75rem;
+  opacity: 0; animation: up 0.55s ease 0.72s forwards;
+}
+.summ { background: var(--col-surface); padding: 1.1rem 1.2rem; border-left: 3px solid transparent; transition: background 0.18s; }
 .summ:hover { background: var(--col-bg); }
-.summ-name { font-size: 0.82rem; font-weight: 600; color: var(--col-primary); margin-bottom: 0.2rem; }
-.summ-status { font-size: 0.72rem; color: var(--col-muted); margin-bottom: 0.6rem; }
-.summ-arrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--col-gold); margin-bottom: 0.25rem; display: block; }
-.summ-next { font-size: 0.74rem; color: var(--col-text); line-height: 1.5; }
+.summ-name { font-size: 0.8rem; font-weight: 600; color: var(--col-primary); margin-bottom: 0.2rem; }
+.summ-status { font-size: 0.7rem; color: var(--col-muted); margin-bottom: 0.5rem; }
+.summ-arrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--col-gold); margin-bottom: 0.2rem; display: block; }
+.summ-next { font-size: 0.72rem; color: var(--col-text); line-height: 1.5; }
 
 /* ── FOOTER ── */
-.footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1.25rem; border-top: 1px solid var(--col-border); opacity: 0; animation: up 0.55s ease 0.85s forwards; }
-.footer-left { font-size: 0.72rem; color: var(--col-muted); display: flex; align-items: center; gap: 7px; }
+.footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1.1rem; border-top: 1px solid var(--col-border);
+  flex-wrap: wrap; gap: 0.5rem;
+  opacity: 0; animation: up 0.55s ease 0.85s forwards;
+}
+.footer-left { font-size: 0.7rem; color: var(--col-muted); display: flex; align-items: center; gap: 7px; }
 .footer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--col-gold); flex-shrink: 0; }
-.footer-right { font-size: 0.72rem; color: var(--col-muted); }
+.footer-right { font-size: 0.7rem; color: var(--col-muted); }
 
 /* ── TOAST ── */
 #toast {
-  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  position: fixed; bottom: 1.25rem; right: 1.25rem;
   background: var(--col-primary); color: #fff;
   font-size: 0.75rem; padding: 10px 16px; border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
@@ -247,25 +262,104 @@ body {
   0%,100% { box-shadow: 0 0 0 5px rgba(201,168,76,0.2), 0 0 0 10px rgba(201,168,76,0.07); }
   50%      { box-shadow: 0 0 0 7px rgba(201,168,76,0.25),0 0 0 14px rgba(201,168,76,0.04); }
 }
+
+/* ════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+════════════════════════════════════════ */
+
+/* Tablet — 768px */
+@media (max-width: 768px) {
+  .page { padding: 0 1rem 3rem; }
+
+  .hero { padding: 1.5rem 1.25rem; border-radius: 12px; }
+
+  /* Stats: 2x2 grid */
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 1.5rem; }
+
+  /* Cards: single column */
+  .cards { grid-template-columns: 1fr; gap: 0.85rem; }
+  .card:hover { transform: none; }
+
+  /* Detail: single column */
+  .detail-cols { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Summary: single column */
+  .summary { grid-template-columns: 1fr; }
+  .summ { border-left-width: 3px; border-top: none; }
+
+  /* Toolbar hint hidden on mobile */
+  .tb-hint { display: none; }
+
+  /* KPI trio stays 3 col but smaller */
+  .kpi-trio { gap: 6px; }
+  .kpi-val { font-size: 1rem; }
+
+  /* Cards row */
+  .cards-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+}
+
+/* Mobile — 480px */
+@media (max-width: 480px) {
+  #toolbar { padding: 0.5rem 1rem; }
+  .tb-badge { display: none; }
+  .btn { padding: 5px 10px; font-size: 0.65rem; }
+
+  .page { padding: 0 0.75rem 2.5rem; }
+
+  .hero { padding: 1.25rem 1rem; margin: 0.75rem 0 0.85rem; border-radius: 10px; }
+  .hero-title { font-size: 1.35rem; }
+  .hero-sub { font-size: 0.76rem; margin-bottom: 1.25rem; }
+
+  /* Stats: 2x2 compact */
+  .stats { gap: 6px; margin-bottom: 1.25rem; }
+  .stat { padding: 0.8rem; }
+  .stat-num { font-size: 1.5rem; }
+  .stat-lbl { font-size: 0.65rem; }
+
+  /* Timeline scrollable */
+  .timeline { gap: 0; }
+  .tl-step { min-width: 70px; }
+  .tl-lbl { font-size: 0.58rem; }
+  .tl-ev  { font-size: 0.58rem; }
+
+  .card-body { padding: 1rem; }
+  .card-name { font-size: 0.88rem; }
+  .card-desc { font-size: 0.7rem; }
+  .pills { gap: 4px; }
+  .pill { font-size: 0.6rem; padding: 2px 7px; }
+  .card-foot { padding: 0.6rem 1rem; }
+
+  .detail-inner { padding: 1rem; }
+  .kpi-trio { grid-template-columns: repeat(3, 1fr); }
+  .kpi { padding: 0.6rem; }
+  .kpi-val { font-size: 0.95rem; }
+  .kpi-lbl { font-size: 0.6rem; }
+  .si-text { font-size: 0.72rem; }
+  .net-chip { font-size: 0.65rem; padding: 4px 8px; }
+  .next-box { font-size: 0.72rem; padding: 0.7rem; }
+
+  .summ { padding: 1rem; }
+  .footer { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
 
-<!-- ══ TOOLBAR ══ -->
+<!-- TOOLBAR -->
 <div id="toolbar">
   <div class="tb-left">
-    <span class="tb-badge">Edit mode on</span>
-    <span class="tb-hint"><span>Click any text</span> to edit it directly on the page</span>
+    <span class="tb-badge">Edit mode</span>
+    <span class="tb-hint"><span>Click any text</span> to edit directly</span>
   </div>
   <div class="tb-right">
     <button class="btn btn-ghost" onclick="resetAll()">↺ Reset</button>
-    <button class="btn btn-primary" onclick="downloadHTML()">⬇ Download updated file</button>
+    <button class="btn btn-primary" onclick="downloadHTML()">⬇ Download</button>
   </div>
 </div>
 
 <div class="page" id="main-page">
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-rule"></div>
   <div class="hero-eyebrow" contenteditable="true">dnata Cargo · Innovation &amp; Digitalisation</div>
@@ -274,19 +368,19 @@ body {
 
   <div class="stats">
     <div class="stat">
-      <div class="stat-num" id="s0" contenteditable="true">3</div>
+      <div class="stat-num" contenteditable="true">3</div>
       <div class="stat-lbl" contenteditable="true">Active initiatives</div>
     </div>
     <div class="stat">
-      <div class="stat-num" id="s1" contenteditable="true">1</div>
+      <div class="stat-num" contenteditable="true">1</div>
       <div class="stat-lbl" contenteditable="true">PoC confirmed</div>
     </div>
     <div class="stat">
-      <div class="stat-num" id="s2" contenteditable="true">17+</div>
+      <div class="stat-num" contenteditable="true">17+</div>
       <div class="stat-lbl" contenteditable="true">Vendors in evaluation across initiatives</div>
     </div>
     <div class="stat">
-      <div class="stat-num" id="s3" contenteditable="true">6+</div>
+      <div class="stat-num" contenteditable="true">6+</div>
       <div class="stat-lbl" contenteditable="true">Network countries engaged</div>
     </div>
   </div>
@@ -295,12 +389,12 @@ body {
     <div class="tl-spine"></div>
     <div class="tl-spine-done"></div>
     <div class="tl-step">
-      <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="tl-lbl" contenteditable="true">Feb 2026</div>
       <div class="tl-ev" contenteditable="true">RFI &amp; vendor landscape</div>
     </div>
     <div class="tl-step">
-      <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="tl-lbl" contenteditable="true">Mar 2026</div>
       <div class="tl-ev" contenteditable="true">Requirements &amp; demos</div>
     </div>
@@ -327,7 +421,7 @@ body {
   </div>
 </div>
 
-<!-- ══ CARDS HEADER ══ -->
+<!-- CARDS -->
 <div class="cards-row">
   <span class="cards-row-lbl" contenteditable="true">Active initiatives</span>
   <span class="cards-row-hint" contenteditable="true">Select any card to explore</span>
@@ -335,14 +429,14 @@ body {
 
 <div class="cards">
 
-  <!-- CARD 1: DIMENSIONING -->
+  <!-- CARD 1 -->
   <div class="card-wrap">
     <div class="card" id="c0" onclick="toggle(event,0)" style="--card-accent:var(--col-blue)">
       <div class="card-stripe" style="background:var(--col-blue)"></div>
       <div class="card-body">
         <div class="card-icon-row">
           <div class="card-icon" style="background:var(--col-blue-lt)">
-            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-blue)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="6" width="14" height="10" rx="1.5"></rect><path d="M7 6V4.5M10 6V4.5M13 6V4.5M3 9.5h14"></path></svg>
+            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-blue)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="6" width="14" height="10" rx="1.5"/><path d="M7 6V4.5M10 6V4.5M13 6V4.5M3 9.5h14"/></svg>
           </div>
           <div class="card-name" contenteditable="true">In-Motion Dimensioning/Weighing PoC</div>
         </div>
@@ -395,14 +489,14 @@ body {
     </div>
   </div>
 
-  <!-- CARD 2: MARKET INTELLIGENCE -->
+  <!-- CARD 2 -->
   <div class="card-wrap">
     <div class="card" id="c1" onclick="toggle(event,1)" style="--card-accent:var(--col-teal)">
       <div class="card-stripe" style="background:var(--col-teal)"></div>
       <div class="card-body">
         <div class="card-icon-row">
           <div class="card-icon" style="background:var(--col-teal-lt)">
-            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-teal)" stroke-width="1.6" stroke-linecap="round"><path d="M3 15l5-5 3.5 2.5L17 5"></path><circle cx="3" cy="15" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="8" cy="10" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="11.5" cy="12.5" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="17" cy="5" r="1.4" fill="var(--col-teal)" stroke="none"></circle></svg>
+            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-teal)" stroke-width="1.6" stroke-linecap="round"><path d="M3 15l5-5 3.5 2.5L17 5"/><circle cx="3" cy="15" r="1.4" fill="var(--col-teal)" stroke="none"/><circle cx="8" cy="10" r="1.4" fill="var(--col-teal)" stroke="none"/><circle cx="11.5" cy="12.5" r="1.4" fill="var(--col-teal)" stroke="none"/><circle cx="17" cy="5" r="1.4" fill="var(--col-teal)" stroke="none"/></svg>
           </div>
           <div class="card-name" contenteditable="true">Market intelligence</div>
         </div>
@@ -453,18 +547,18 @@ body {
     </div>
   </div>
 
-  <!-- CARD 3: ADM/TMS -->
+  <!-- CARD 3 -->
   <div class="card-wrap">
     <div class="card" id="c2" onclick="toggle(event,2)" style="--card-accent:var(--col-purple)">
       <div class="card-stripe" style="background:var(--col-purple)"></div>
       <div class="card-body">
         <div class="card-icon-row">
           <div class="card-icon" style="background:var(--col-purple-lt)">
-            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-purple)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="14" height="13" rx="1.5"></rect><path d="M7 4V2.5M13 4V2.5M3 9h14M6.5 12.5h2M10.5 12.5h3M6.5 15h4"></path></svg>
+            <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-purple)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="14" height="13" rx="1.5"/><path d="M7 4V2.5M13 4V2.5M3 9h14M6.5 12.5h2M10.5 12.5h3M6.5 15h4"/></svg>
           </div>
           <div class="card-name" contenteditable="true">ADM / TMS procurement</div>
         </div>
-        <div class="card-desc" contenteditable="true">Appointment &amp; Traffic Management RFI — desktop evaluation &amp; demos underway.&nbsp;</div>
+        <div class="card-desc" contenteditable="true">Appointment &amp; Traffic Management RFI — desktop evaluation &amp; demos underway</div>
         <div class="prog-header">
           <span class="prog-lbl">Overall progress</span>
           <span class="prog-pct" style="color:var(--col-purple)" contenteditable="true">35%</span>
@@ -493,8 +587,8 @@ body {
             <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Flag 1: Cargoclix data residency — Germany-hosted, no GCC/UAE option confirmed</div></div>
             <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Flag 2: IBS/OneCargo CMS dependency — co-development vs best-of-breed decision required</div></div>
             <div class="kpi-trio">
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">8</div><div class="kpi-lbl" contenteditable="true">Vendors desktop evaluation completde</div></div>
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">5</div><div class="kpi-lbl" contenteditable="true">Vendor demo in progress</div></div>
+              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">8</div><div class="kpi-lbl" contenteditable="true">Vendors desktop evaluation completed</div></div>
+              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">5</div><div class="kpi-lbl" contenteditable="true">Vendor demos in progress</div></div>
               <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">Q1 '27</div><div class="kpi-lbl" contenteditable="true">Decision target</div></div>
             </div>
           </div>
@@ -504,7 +598,7 @@ body {
               <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span contenteditable="true">AE — RFI owner</span></div>
               <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">UK — requirements next</span></div>
               <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">Additional stations — requirements next</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">Tender/ RFT functional requirements refinement to&nbsp; be completed</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">Tender/RFT functional requirements refinement to be completed</span></div>
             </div>
             <div class="next-box" contenteditable="true"><strong>Next →</strong> Collect network station requirements. Circulate vendor demo recordings. Resolve Cargoclix data residency flag. Clarify IBS co-development vs best-of-breed architecture decision.</div>
           </div>
@@ -513,9 +607,9 @@ body {
     </div>
   </div>
 
-</div><!-- /cards -->
+</div>
 
-<!-- ══ SUMMARY ══ -->
+<!-- SUMMARY -->
 <div class="summary">
   <div class="summ" style="border-left-color:var(--col-blue)">
     <div class="summ-name" contenteditable="true">Dimensioning PoC</div>
@@ -533,11 +627,11 @@ body {
     <div class="summ-name" contenteditable="true">ADM / TMS procurement</div>
     <div class="summ-status" contenteditable="true">RFI demos active · Q1 2027</div>
     <span class="summ-arrow">Next →</span>
-    <div class="summ-next" contenteditable="true">Collect network requirements; finalise vendors for RFT &amp; update functional requirements&nbsp;</div>
+    <div class="summ-next" contenteditable="true">Collect network requirements; finalise vendors for RFT &amp; update functional requirements</div>
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <div class="footer">
   <div class="footer-left">
     <div class="footer-dot"></div>
@@ -546,11 +640,10 @@ body {
   <div class="footer-right" contenteditable="true">Updated April 2026</div>
 </div>
 
-</div><!-- /page -->
-<div id="toast">✓ File downloaded with your changes</div>
+</div>
+<div id="toast">✓ Downloaded with your changes</div>
 
 <script>
-// ── CARD TOGGLE (ignores clicks on editable children) ──
 const openState = [false, false, false];
 function toggle(e, i) {
   if (e.target.isContentEditable || e.target.closest('[contenteditable="true"]')) return;
@@ -559,79 +652,40 @@ function toggle(e, i) {
   document.getElementById('d' + i).classList.toggle('open', openState[i]);
 }
 
-// ── LIVE PROGRESS BAR SYNC ──
-// Watches the % text in each card and keeps the bar in sync
-['pct0','pct1','pct2'].forEach((_, i) => {
-  const pctEl = document.getElementById('c' + i)?.querySelector('.prog-pct');
-  const barEl = document.getElementById('pf' + i);
+[0,1,2].forEach(i => {
+  const pctEl = document.getElementById('c'+i)?.querySelector('.prog-pct');
+  const barEl = document.getElementById('pf'+i);
   if (!pctEl || !barEl) return;
-  const obs = new MutationObserver(() => {
-    const val = parseInt(pctEl.textContent);
-    if (!isNaN(val)) barEl.style.width = Math.min(Math.max(val, 0), 100) + '%';
-  });
-  obs.observe(pctEl, { characterData: true, childList: true, subtree: true });
+  new MutationObserver(() => {
+    const v = parseInt(pctEl.textContent);
+    if (!isNaN(v)) barEl.style.width = Math.min(Math.max(v,0),100)+'%';
+  }).observe(pctEl, { characterData:true, childList:true, subtree:true });
 });
 
-// ── RESET ──
 function resetAll() {
-  if (!confirm('Reset all edits and reload original content?')) return;
+  if (!confirm('Reset all edits and reload?')) return;
   location.reload();
 }
 
-// ── DOWNLOAD ──
 function downloadHTML() {
-  // Clone the full page so we can clean it up for export
   const clone = document.documentElement.cloneNode(true);
-
-  // Remove toolbar from export
   clone.querySelector('#toolbar')?.remove();
   clone.querySelector('#toast')?.remove();
-
-  // Strip contenteditable attributes — clean static file for sharing
-  clone.querySelectorAll('[contenteditable]').forEach(el => {
-    el.removeAttribute('contenteditable');
-  });
-
-  // Strip the edit-mode hover styles from the clone's style
-  // (keep everything else so the page looks identical)
-  const styles = clone.querySelectorAll('style');
-  styles.forEach(s => {
-    s.textContent = s.textContent
-      .replace(/\[contenteditable="true"\][^}]*\{[^}]*\}/g, '')
-      .replace(/\[contenteditable="true"\]:hover[^}]*\{[^}]*\}/g, '')
-      .replace(/\[contenteditable="true"\]:focus[^}]*\{[^}]*\}/g, '')
-      .replace(/\[contenteditable="true"\]:hover::after[^}]*\{[^}]*\}/g, '')
-      .replace(/#toolbar[^}]*\{[^}]*\}/g, '')
-      .replace(/#toast[^}]*\{[^}]*\}/g, '')
-      .replace(/\.btn[^}]*\{[^}]*\}/g, '')
-      .replace(/\.tb-[^}]*\{[^}]*\}/g, '');
-  });
-
-  // Remove the page top padding added by toolbar
-  const pageEl = clone.querySelector('.page');
-  if (pageEl) pageEl.style.paddingTop = '';
-
+  clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
   const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-  const blob = new Blob([html], { type: 'text/html' });
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'dnata_innovation_deck_' + new Date().toISOString().slice(0,10) + '.html';
+  a.href = URL.createObjectURL(new Blob([html], {type:'text/html'}));
+  a.download = 'dnata_innovation_' + new Date().toISOString().slice(0,10) + '.html';
   a.click();
   URL.revokeObjectURL(a.href);
-
-  // Show toast
   const t = document.getElementById('toast');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ── PREVENT ENTER KEY FROM CREATING <div> blocks ──
 document.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && e.target.isContentEditable) {
-    e.preventDefault();
-  }
+  if (e.key === 'Enter' && e.target.isContentEditable) e.preventDefault();
 });
 </script>
-
-
-</body></html>
+</body>
+</html>
