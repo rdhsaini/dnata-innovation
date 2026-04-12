@@ -43,8 +43,8 @@ body{font-family:'Inter',sans-serif;background:#F4F6FA;color:#1A2B4A;font-size:1
 .sec-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .sec-lbl{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .sec-hint{font-size:13px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px;align-items:start}
-.col{display:flex;flex-direction:column}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px;align-items:start;grid-template-rows:auto}
+.col{display:contents}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s,border-color .2s}
 .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.1);border-color:#CBD5E1}
 .card.open{border-color:var(--cc)}
@@ -71,10 +71,10 @@ body{font-family:'Inter',sans-serif;background:#F4F6FA;color:#1A2B4A;font-size:1
 .c-date strong{color:var(--navy);font-weight:600}
 .chev{font-size:16px;color:var(--muted);transition:transform .22s;pointer-events:none;display:inline-block}
 .card.open .chev{transform:rotate(180deg)}
-.exp{max-height:0;overflow:hidden;transition:max-height .42s ease}
+.exp{max-height:0;overflow:hidden;transition:max-height .42s ease;grid-column:1/-1}
 .exp.open{max-height:1200px}
 .exp-in{background:#FAFBFD;border:1px solid var(--border);border-top:none;border-radius:0 0 14px 14px;padding:20px;margin-top:-1px}
-.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px} @media(max-width:640px){.d-grid{grid-template-columns:1fr}}
 .d-hd{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .si{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px}
 .sd{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
