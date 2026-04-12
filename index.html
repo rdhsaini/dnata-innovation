@@ -248,32 +248,44 @@ body {
   50%      { box-shadow: 0 0 0 7px rgba(201,168,76,0.25),0 0 0 14px rgba(201,168,76,0.04); }
 }
 
-/* ── RESPONSIVE CENTRE FIX ── */
-html, body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
-#toolbar { width: 100%; left: 0; right: 0; }
+/* ── CENTRE FIX ── */
+html { margin: 0; padding: 0; }
+body { margin: 0; padding: 0; overflow-x: hidden; }
+#toolbar { width: 100%; box-sizing: border-box; }
 .page {
+  box-sizing: border-box !important;
   width: 100% !important;
-  max-width: 960px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
 }
-@media (max-width: 900px) {
-  .cards { grid-template-columns: 1fr 1fr !important; }
-  .stats { grid-template-columns: repeat(2, 1fr) !important; }
-  .detail-cols, .detail-inner .detail-cols { grid-template-columns: 1fr !important; }
+.hero, .cards-row, .cards, .summary, .footer {
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+.cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+.stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+.summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+@media (max-width: 860px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .detail-cols { grid-template-columns: 1fr !important; }
   .summary { grid-template-columns: 1fr !important; }
   .summ { border-right: none !important; border-bottom: 1px solid var(--col-border) !important; }
   .summ:last-child { border-bottom: none !important; }
 }
-@media (max-width: 580px) {
+@media (max-width: 560px) {
   .cards { grid-template-columns: 1fr !important; }
-  .stats { grid-template-columns: 1fr 1fr !important; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .page { padding: 0 16px !important; }
   .tb-hint { display: none !important; }
-  .page { padding-left: 1rem !important; padding-right: 1rem !important; }
   .hero-title { font-size: 1.5rem !important; }
-  .card:hover { transform: none !important; }
 }
 
 </style>
