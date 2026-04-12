@@ -47,26 +47,63 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── EDIT MODE TOOLBAR ── */
+#toolbar {
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--col-primary);
+  padding: 0.6rem 1.75rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+}
+.tb-left { display: flex; align-items: center; gap: 10px; }
+.tb-badge {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--col-gold);
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 99px; padding: 3px 10px;
+}
+.tb-hint {
+  font-size: 0.72rem; color: rgba(255,255,255,0.5);
+}
+.tb-hint span { color: rgba(255,255,255,0.8); }
+.tb-right { display: flex; gap: 8px; align-items: center; }
 
+.btn {
+  font-family: var(--font-main);
+  font-size: 0.72rem; font-weight: 500;
+  padding: 6px 14px; border-radius: 8px; cursor: pointer;
+  border: none; transition: opacity 0.15s, transform 0.1s;
+}
+.btn:active { transform: scale(0.97); }
+.btn-ghost {
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.18); }
+.btn-primary {
+  background: var(--col-gold); color: var(--col-primary);
+  font-weight: 600;
+}
+.btn-primary:hover { opacity: 0.9; }
 
 /* ── EDITABLE ELEMENTS ── */
-[] {
+[contenteditable="true"] {
   outline: none;
   border-radius: 4px;
   transition: background 0.15s, box-shadow 0.15s;
   cursor: text;
 }
-[]:hover {
+[contenteditable="true"]:hover {
   background: rgba(201,168,76,0.08);
   box-shadow: 0 0 0 2px rgba(201,168,76,0.25);
 }
-[]:focus {
+[contenteditable="true"]:focus {
   background: rgba(201,168,76,0.12);
   box-shadow: 0 0 0 2px rgba(201,168,76,0.5);
 }
 
 /* Subtle edit indicator dot on hover */
-[]:hover::after {
+[contenteditable="true"]:hover::after {
   content: ' ✎';
   font-size: 0.7em;
   opacity: 0.5;
@@ -214,7 +251,7 @@ body {
 /* ── CENTRE FIX ── */
 html { margin: 0; padding: 0; }
 body { margin: 0; padding: 0; overflow-x: hidden; }
-
+#toolbar { width: 100%; box-sizing: border-box; }
 .page {
   box-sizing: border-box !important;
   width: 100% !important;
@@ -256,6 +293,11 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
 <body>
 
 <!-- ══ TOOLBAR ══ -->
+<div id="toolbar">
+  <div class="tb-left">
+    <span class="tb-badge">Edit mode on</span>
+    <span class="tb-hint"><span>Click any text</span> to edit it directly on the page</span>
+  </div>
   <div class="tb-right">
     <button class="btn btn-ghost" onclick="resetAll()">↺ Reset</button>
     <button class="btn btn-primary" onclick="downloadHTML()">⬇ Download updated file</button>
@@ -267,26 +309,26 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
 <!-- ══ HERO ══ -->
 <div class="hero">
   <div class="hero-rule"></div>
-  <div class="hero-eyebrow">dnata Cargo · Innovation &amp; Digitalisation</div>
-  <h1 class="hero-title">Global innovation network</h1>
-  <p class="hero-sub">Initiatives status deck · April 2026 · 3 active workstreams</p>
+  <div class="hero-eyebrow" contenteditable="true">dnata Cargo · Innovation &amp; Digitalisation</div>
+  <h1 class="hero-title" contenteditable="true">Global innovation network</h1>
+  <p class="hero-sub" contenteditable="true">Initiatives status deck · April 2026 · 3 active workstreams</p>
 
   <div class="stats">
     <div class="stat">
-      <div class="stat-num" id="s0">3</div>
-      <div class="stat-lbl">Active initiatives</div>
+      <div class="stat-num" id="s0" contenteditable="true">3</div>
+      <div class="stat-lbl" contenteditable="true">Active initiatives</div>
     </div>
     <div class="stat">
-      <div class="stat-num" id="s1">1</div>
-      <div class="stat-lbl">PoC confirmed</div>
+      <div class="stat-num" id="s1" contenteditable="true">1</div>
+      <div class="stat-lbl" contenteditable="true">PoC confirmed</div>
     </div>
     <div class="stat">
-      <div class="stat-num" id="s2">17+</div>
-      <div class="stat-lbl">Vendors in evaluation across initiatives</div>
+      <div class="stat-num" id="s2" contenteditable="true">17+</div>
+      <div class="stat-lbl" contenteditable="true">Vendors in evaluation across initiatives</div>
     </div>
     <div class="stat">
-      <div class="stat-num" id="s3">6+</div>
-      <div class="stat-lbl">Network countries engaged</div>
+      <div class="stat-num" id="s3" contenteditable="true">6+</div>
+      <div class="stat-lbl" contenteditable="true">Network countries engaged</div>
     </div>
   </div>
 
@@ -295,41 +337,41 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
     <div class="tl-spine-done"></div>
     <div class="tl-step">
       <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
-      <div class="tl-lbl">Feb 2026</div>
-      <div class="tl-ev">RFI &amp; vendor landscape</div>
+      <div class="tl-lbl" contenteditable="true">Feb 2026</div>
+      <div class="tl-ev" contenteditable="true">RFI &amp; vendor landscape</div>
     </div>
     <div class="tl-step">
       <div class="tl-dot done"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
-      <div class="tl-lbl">Mar 2026</div>
-      <div class="tl-ev">Requirements &amp; demos</div>
+      <div class="tl-lbl" contenteditable="true">Mar 2026</div>
+      <div class="tl-ev" contenteditable="true">Requirements &amp; demos</div>
     </div>
     <div class="tl-step">
       <div class="tl-dot now"></div>
-      <div class="tl-lbl now">Apr 2026</div>
-      <div class="tl-ev now">PoC setup &amp; current process evaluation</div>
+      <div class="tl-lbl now" contenteditable="true">Apr 2026</div>
+      <div class="tl-ev now" contenteditable="true">PoC setup &amp; current process evaluation</div>
     </div>
     <div class="tl-step">
       <div class="tl-dot future"></div>
-      <div class="tl-lbl">May 2026</div>
-      <div class="tl-ev">Equipment &amp; network WGs</div>
+      <div class="tl-lbl" contenteditable="true">May 2026</div>
+      <div class="tl-ev" contenteditable="true">Equipment &amp; network WGs</div>
     </div>
     <div class="tl-step">
       <div class="tl-dot future"></div>
-      <div class="tl-lbl">Aug 2026</div>
-      <div class="tl-ev">PoC results &amp; discovery playback</div>
+      <div class="tl-lbl" contenteditable="true">Aug 2026</div>
+      <div class="tl-ev" contenteditable="true">PoC results &amp; discovery playback</div>
     </div>
     <div class="tl-step">
       <div class="tl-dot future"></div>
-      <div class="tl-lbl">Q4 2026</div>
-      <div class="tl-ev">Discovery playback &amp; next steps</div>
+      <div class="tl-lbl" contenteditable="true">Q4 2026</div>
+      <div class="tl-ev" contenteditable="true">Discovery playback &amp; next steps</div>
     </div>
   </div>
 </div>
 
 <!-- ══ CARDS HEADER ══ -->
 <div class="cards-row">
-  <span class="cards-row-lbl">Active initiatives</span>
-  <span class="cards-row-hint">Select any card to explore</span>
+  <span class="cards-row-lbl" contenteditable="true">Active initiatives</span>
+  <span class="cards-row-hint" contenteditable="true">Select any card to explore</span>
 </div>
 
 <div class="cards">
@@ -343,22 +385,22 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
           <div class="card-icon" style="background:var(--col-blue-lt)">
             <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-blue)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="6" width="14" height="10" rx="1.5"></rect><path d="M7 6V4.5M10 6V4.5M13 6V4.5M3 9.5h14"></path></svg>
           </div>
-          <div class="card-name">In-Motion Dimensioning/Weighing PoC</div>
+          <div class="card-name" contenteditable="true">In-Motion Dimensioning/Weighing PoC</div>
         </div>
-        <div class="card-desc">Automated cargo dimensioning &amp; weighing — CIND &amp; RAVAS vendor-funded proof of concept</div>
+        <div class="card-desc" contenteditable="true">Automated cargo dimensioning &amp; weighing — CIND &amp; RAVAS vendor-funded proof of concept</div>
         <div class="prog-header">
           <span class="prog-lbl">Overall progress</span>
-          <span class="prog-pct" style="color:var(--col-blue)">28%</span>
+          <span class="prog-pct" style="color:var(--col-blue)" contenteditable="true">28%</span>
         </div>
         <div class="prog-track"><div class="prog-fill" id="pf0" style="width:28%;background:var(--col-blue)"></div></div>
         <div class="pills">
-          <span class="pill pill-amber">Setup discussion in progress</span>
-          <span class="pill pill-green">PoC cost-free</span>
-          <span class="pill pill-info">Support from UAE to be discussed</span>
+          <span class="pill pill-amber" contenteditable="true">Setup discussion in progress</span>
+          <span class="pill pill-green" contenteditable="true">PoC cost-free</span>
+          <span class="pill pill-info" contenteditable="true">Support from UAE to be discussed</span>
         </div>
       </div>
       <div class="card-foot">
-        <div class="card-completion">Target completion <strong>Aug 2026</strong></div>
+        <div class="card-completion">Target completion <strong contenteditable="true">Aug 2026</strong></div>
         <span class="chevron">⌄</span>
       </div>
     </div>
@@ -367,27 +409,27 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
         <div class="detail-cols">
           <div>
             <div class="detail-head">Status &amp; progress</div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">PoC setup and process discussions actively in progress</div></div>
-            <div class="si"><div class="si-dot green"></div><div class="si-text">CIND + RAVAS confirmed: free 3-month PoC at UK — zero cost to dnata</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Equipment delivery target: May 2026</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">KPI 1: Stated vs actual dimensions &amp; weight accuracy ≥95%</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">KPI 2: Scan speed ≤1 sec; OneCargo integration feasibility</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Requirements shared with network; working group cadence being established</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">PoC setup and process discussions actively in progress</div></div>
+            <div class="si"><div class="si-dot green"></div><div class="si-text" contenteditable="true">CIND + RAVAS confirmed: free 3-month PoC at UK — zero cost to dnata</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Equipment delivery target: May 2026</div></div>
+            <div class="si"><div class="si-dot info"></div><div class="si-text" contenteditable="true">KPI 1: Stated vs actual dimensions &amp; weight accuracy ≥95%</div></div>
+            <div class="si"><div class="si-dot info"></div><div class="si-text" contenteditable="true">KPI 2: Scan speed ≤1 sec; OneCargo integration feasibility</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Requirements shared with network; working group cadence being established</div></div>
             <div class="kpi-trio">
-              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val">≥95%</div><div class="kpi-lbl">Accuracy target</div></div>
-              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val">≤1 sec</div><div class="kpi-lbl">Scan speed</div></div>
-              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val">3 mo.</div><div class="kpi-lbl">PoC duration</div></div>
+              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val" contenteditable="true">≥95%</div><div class="kpi-lbl" contenteditable="true">Accuracy target</div></div>
+              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val" contenteditable="true">≤1 sec</div><div class="kpi-lbl" contenteditable="true">Scan speed</div></div>
+              <div class="kpi" style="border-top-color:var(--col-blue)"><div class="kpi-val" contenteditable="true">3 mo.</div><div class="kpi-lbl" contenteditable="true">PoC duration</div></div>
             </div>
           </div>
           <div>
             <div class="detail-head">Network engagement</div>
             <div class="net-chips">
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>UK — host station</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>AU — watching results</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>US — watching results</span></div>
-              <div class="net-chip"><div class="net-dot" style="background:var(--col-slate)"></div><span>AE — initiative owner</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span contenteditable="true">UK — host station</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">AU — watching results</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">US — watching results</span></div>
+              <div class="net-chip"><div class="net-dot" style="background:var(--col-slate)"></div><span contenteditable="true">AE — initiative owner</span></div>
             </div>
-            <div class="next-box"><strong>Next →</strong> Align KPIs &amp; baseline processes before May equipment drop. Establish regular working group cadence with network stations.</div>
+            <div class="next-box" contenteditable="true"><strong>Next →</strong> Align KPIs &amp; baseline processes before May equipment drop. Establish regular working group cadence with network stations.</div>
           </div>
         </div>
       </div>
@@ -403,22 +445,22 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
           <div class="card-icon" style="background:var(--col-teal-lt)">
             <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-teal)" stroke-width="1.6" stroke-linecap="round"><path d="M3 15l5-5 3.5 2.5L17 5"></path><circle cx="3" cy="15" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="8" cy="10" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="11.5" cy="12.5" r="1.4" fill="var(--col-teal)" stroke="none"></circle><circle cx="17" cy="5" r="1.4" fill="var(--col-teal)" stroke="none"></circle></svg>
           </div>
-          <div class="card-name">Market intelligence</div>
+          <div class="card-name" contenteditable="true">Market intelligence</div>
         </div>
-        <div class="card-desc">Cargo data platform evaluation — CargoIS, WorldACD, Aevea &amp; Accenture in scope</div>
+        <div class="card-desc" contenteditable="true">Cargo data platform evaluation — CargoIS, WorldACD, Aevea &amp; Accenture in scope</div>
         <div class="prog-header">
           <span class="prog-lbl">Overall progress</span>
-          <span class="prog-pct" style="color:var(--col-teal)">20%</span>
+          <span class="prog-pct" style="color:var(--col-teal)" contenteditable="true">20%</span>
         </div>
         <div class="prog-track"><div class="prog-fill" id="pf1" style="width:20%;background:var(--col-teal)"></div></div>
         <div class="pills">
-          <span class="pill pill-amber">Requirements phase</span>
-          <span class="pill pill-green">6 vendors scoped</span>
-          <span class="pill pill-green">Use cases defined</span>
+          <span class="pill pill-amber" contenteditable="true">Requirements phase</span>
+          <span class="pill pill-green" contenteditable="true">6 vendors scoped</span>
+          <span class="pill pill-green" contenteditable="true">Use cases defined</span>
         </div>
       </div>
       <div class="card-foot">
-        <div class="card-completion">Platform decision <strong>Q4 2026</strong></div>
+        <div class="card-completion">Platform decision <strong contenteditable="true">Q4 2026</strong></div>
         <span class="chevron">⌄</span>
       </div>
     </div>
@@ -427,25 +469,25 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
         <div class="detail-cols">
           <div>
             <div class="detail-head">Status &amp; progress</div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Functional requirements gathering underway — UK &amp; UAE teams engaged</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">CargoIS (IATA/CASS subscription) — evaluation &amp; commercial discussion in progress</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">WorldACD, Accenture &amp; Aevea — active vendor discussions underway</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Use cases: trade lane demand, capacity planning, pricing optimisation, strategic insight</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Integration scope: iCargo &amp; OneCargo as primary internal data sources</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Functional requirements gathering underway — UK &amp; UAE teams engaged</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">CargoIS (IATA/CASS subscription) — evaluation &amp; commercial discussion in progress</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">WorldACD, Accenture &amp; Aevea — active vendor discussions underway</div></div>
+            <div class="si"><div class="si-dot info"></div><div class="si-text" contenteditable="true">Use cases: trade lane demand, capacity planning, pricing optimisation, strategic insight</div></div>
+            <div class="si"><div class="si-dot info"></div><div class="si-text" contenteditable="true">Integration scope: iCargo &amp; OneCargo as primary internal data sources</div></div>
             <div class="kpi-trio">
-              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val">4</div><div class="kpi-lbl">Vendors scoped</div></div>
-              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val">7+</div><div class="kpi-lbl">Use cases defined</div></div>
-              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val">2</div><div class="kpi-lbl">Internal sources</div></div>
+              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val" contenteditable="true">4</div><div class="kpi-lbl" contenteditable="true">Vendors scoped</div></div>
+              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val" contenteditable="true">7+</div><div class="kpi-lbl" contenteditable="true">Use cases defined</div></div>
+              <div class="kpi" style="border-top-color:var(--col-teal)"><div class="kpi-val" contenteditable="true">2</div><div class="kpi-lbl" contenteditable="true">Internal sources</div></div>
             </div>
           </div>
           <div>
             <div class="detail-head">Network engagement</div>
             <div class="net-chips">
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>UK — requirements input</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>AE — requirements owner</span></div>
-              <div class="net-chip"><div class="net-dot" style="background:var(--col-slate)"></div><span>Network — post-baseline</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span contenteditable="true">UK — requirements input</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span contenteditable="true">AE — requirements owner</span></div>
+              <div class="net-chip"><div class="net-dot" style="background:var(--col-slate)"></div><span contenteditable="true">Network — post-baseline</span></div>
             </div>
-            <div class="next-box"><strong>Next →</strong> Finalise requirements baseline. Shortlist intelligence platform vendor for pilot. Align on IATA CargoIS commercial model.</div>
+            <div class="next-box" contenteditable="true"><strong>Next →</strong> Finalise requirements baseline. Shortlist intelligence platform vendor for pilot. Align on IATA CargoIS commercial model.</div>
           </div>
         </div>
       </div>
@@ -461,22 +503,22 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
           <div class="card-icon" style="background:var(--col-purple-lt)">
             <svg viewBox="0 0 20 20" fill="none" stroke="var(--col-purple)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="14" height="13" rx="1.5"></rect><path d="M7 4V2.5M13 4V2.5M3 9h14M6.5 12.5h2M10.5 12.5h3M6.5 15h4"></path></svg>
           </div>
-          <div class="card-name">ADM / TMS procurement</div>
+          <div class="card-name" contenteditable="true">ADM / TMS procurement</div>
         </div>
-        <div class="card-desc">Appointment &amp; Traffic Management RFI — desktop evaluation &amp; demos underway.&nbsp;</div>
+        <div class="card-desc" contenteditable="true">Appointment &amp; Traffic Management RFI — desktop evaluation &amp; demos underway.&nbsp;</div>
         <div class="prog-header">
           <span class="prog-lbl">Overall progress</span>
-          <span class="prog-pct" style="color:var(--col-purple)">35%</span>
+          <span class="prog-pct" style="color:var(--col-purple)" contenteditable="true">35%</span>
         </div>
         <div class="prog-track"><div class="prog-fill" id="pf2" style="width:35%;background:var(--col-purple)"></div></div>
         <div class="pills">
-          <span class="pill pill-amber">RFI demos live</span>
-          <span class="pill pill-purple">5 vendors</span>
-          <span class="pill pill-info">Network req. next</span>
+          <span class="pill pill-amber" contenteditable="true">RFI demos live</span>
+          <span class="pill pill-purple" contenteditable="true">5 vendors</span>
+          <span class="pill pill-info" contenteditable="true">Network req. next</span>
         </div>
       </div>
       <div class="card-foot">
-        <div class="card-completion">Vendor decision <strong>Q1 2027</strong></div>
+        <div class="card-completion">Vendor decision <strong contenteditable="true">Q1 2027</strong></div>
         <span class="chevron">⌄</span>
       </div>
     </div>
@@ -485,27 +527,27 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
         <div class="detail-cols">
           <div>
             <div class="detail-head">Status &amp; progress</div>
-            <div class="si"><div class="si-dot green"></div><div class="si-text">UAE requirements defined; RFI demos actively in progress</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Vendors in demo phase: EPG, Nallian, Cargoclix, IBS, Blue Yonder</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Network requirements to be collected &amp; shared with all 5 vendors for feedback</div></div>
-            <div class="si"><div class="si-dot info"></div><div class="si-text">Vendor demo recordings available to circulate to network stations on request</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Flag 1: Cargoclix data residency — Germany-hosted, no GCC/UAE option confirmed</div></div>
-            <div class="si"><div class="si-dot amber"></div><div class="si-text">Flag 2: IBS/OneCargo CMS dependency — co-development vs best-of-breed decision required</div></div>
+            <div class="si"><div class="si-dot green"></div><div class="si-text" contenteditable="true">UAE requirements defined; RFI demos actively in progress</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Vendors in demo phase: EPG, Nallian, Cargoclix, IBS, Blue Yonder</div></div>
+            <div class="si"><div class="si-dot info"></div><div class="si-text" contenteditable="true">Network requirements to be collected &amp; shared with all 5 vendors for feedback</div></div>
+            <div class="si"><div class="si-dot info"></div><div class="si-text" contenteditable="true">Vendor demo recordings available to circulate to network stations on request</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Flag 1: Cargoclix data residency — Germany-hosted, no GCC/UAE option confirmed</div></div>
+            <div class="si"><div class="si-dot amber"></div><div class="si-text" contenteditable="true">Flag 2: IBS/OneCargo CMS dependency — co-development vs best-of-breed decision required</div></div>
             <div class="kpi-trio">
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val">8</div><div class="kpi-lbl">Vendors desktop evaluation completde</div></div>
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val">5</div><div class="kpi-lbl">Vendor demo in progress</div></div>
-              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val">Q1 '27</div><div class="kpi-lbl">Decision target</div></div>
+              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">8</div><div class="kpi-lbl" contenteditable="true">Vendors desktop evaluation completde</div></div>
+              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">5</div><div class="kpi-lbl" contenteditable="true">Vendor demo in progress</div></div>
+              <div class="kpi" style="border-top-color:var(--col-purple)"><div class="kpi-val" contenteditable="true">Q1 '27</div><div class="kpi-lbl" contenteditable="true">Decision target</div></div>
             </div>
           </div>
           <div>
             <div class="detail-head">Network engagement</div>
             <div class="net-chips">
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span>AE — RFI owner</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>UK — requirements next</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>Additional stations — requirements next</span></div>
-              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span>Tender/ RFT functional requirements refinement to&nbsp; be completed</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-green)"></div><span contenteditable="true">AE — RFI owner</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">UK — requirements next</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">Additional stations — requirements next</span></div>
+              <div class="net-chip on"><div class="net-dot" style="background:var(--col-amber)"></div><span contenteditable="true">Tender/ RFT functional requirements refinement to&nbsp; be completed</span></div>
             </div>
-            <div class="next-box"><strong>Next →</strong> Collect network station requirements. Circulate vendor demo recordings. Resolve Cargoclix data residency flag. Clarify IBS co-development vs best-of-breed architecture decision.</div>
+            <div class="next-box" contenteditable="true"><strong>Next →</strong> Collect network station requirements. Circulate vendor demo recordings. Resolve Cargoclix data residency flag. Clarify IBS co-development vs best-of-breed architecture decision.</div>
           </div>
         </div>
       </div>
@@ -517,22 +559,22 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
 <!-- ══ SUMMARY ══ -->
 <div class="summary">
   <div class="summ" style="border-left-color:var(--col-blue)">
-    <div class="summ-name">Dimensioning PoC</div>
-    <div class="summ-status">Setup in progress · Aug 2026</div>
+    <div class="summ-name" contenteditable="true">Dimensioning PoC</div>
+    <div class="summ-status" contenteditable="true">Setup in progress · Aug 2026</div>
     <span class="summ-arrow">Next →</span>
-    <div class="summ-next">Align KPIs &amp; baseline before May equipment drop</div>
+    <div class="summ-next" contenteditable="true">Align KPIs &amp; baseline before May equipment drop</div>
   </div>
   <div class="summ" style="border-left-color:var(--col-teal)">
-    <div class="summ-name">Market intelligence</div>
-    <div class="summ-status">Requirements gathering · Q4 2026</div>
+    <div class="summ-name" contenteditable="true">Market intelligence</div>
+    <div class="summ-status" contenteditable="true">Requirements gathering · Q4 2026</div>
     <span class="summ-arrow">Next →</span>
-    <div class="summ-next">Finalise requirements; shortlist intelligence platform vendor</div>
+    <div class="summ-next" contenteditable="true">Finalise requirements; shortlist intelligence platform vendor</div>
   </div>
   <div class="summ" style="border-left-color:var(--col-purple)">
-    <div class="summ-name">ADM / TMS procurement</div>
-    <div class="summ-status">RFI demos active · Q1 2027</div>
+    <div class="summ-name" contenteditable="true">ADM / TMS procurement</div>
+    <div class="summ-status" contenteditable="true">RFI demos active · Q1 2027</div>
     <span class="summ-arrow">Next →</span>
-    <div class="summ-next">Collect network requirements; finalise vendors for RFT &amp; update functional requirements&nbsp;</div>
+    <div class="summ-next" contenteditable="true">Collect network requirements; finalise vendors for RFT &amp; update functional requirements&nbsp;</div>
   </div>
 </div>
 
@@ -540,19 +582,19 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
 <div class="footer">
   <div class="footer-left">
     <div class="footer-dot"></div>
-    <span>Innovation &amp; Digitalisation · dnata Cargo · Confidential</span>
+    <span contenteditable="true">Innovation &amp; Digitalisation · dnata Cargo · Confidential</span>
   </div>
-  <div class="footer-right">Updated April 2026</div>
+  <div class="footer-right" contenteditable="true">Updated April 2026</div>
 </div>
 
 </div><!-- /page -->
-
+<div id="toast">✓ File downloaded with your changes</div>
 
 <script>
 // ── CARD TOGGLE (ignores clicks on editable children) ──
 const openState = [false, false, false];
 function toggle(e, i) {
-  if (e.target.isContentEditable || e.target.closest('[]')) return;
+  if (e.target.isContentEditable || e.target.closest('[contenteditable="true"]')) return;
   openState[i] = !openState[i];
   document.getElementById('c' + i).classList.toggle('open', openState[i]);
   document.getElementById('d' + i).classList.toggle('open', openState[i]);
@@ -571,7 +613,65 @@ function toggle(e, i) {
   obs.observe(pctEl, { characterData: true, childList: true, subtree: true });
 });
 
+// ── RESET ──
+function resetAll() {
+  if (!confirm('Reset all edits and reload original content?')) return;
+  location.reload();
+}
 
+// ── DOWNLOAD ──
+function downloadHTML() {
+  // Clone the full page so we can clean it up for export
+  const clone = document.documentElement.cloneNode(true);
+
+  // Remove toolbar from export
+  clone.querySelector('#toolbar')?.remove();
+  clone.querySelector('#toast')?.remove();
+
+  // Strip contenteditable attributes — clean static file for sharing
+  clone.querySelectorAll('[contenteditable]').forEach(el => {
+    el.removeAttribute('contenteditable');
+  });
+
+  // Strip the edit-mode hover styles from the clone's style
+  // (keep everything else so the page looks identical)
+  const styles = clone.querySelectorAll('style');
+  styles.forEach(s => {
+    s.textContent = s.textContent
+      .replace(/\[contenteditable="true"\][^}]*\{[^}]*\}/g, '')
+      .replace(/\[contenteditable="true"\]:hover[^}]*\{[^}]*\}/g, '')
+      .replace(/\[contenteditable="true"\]:focus[^}]*\{[^}]*\}/g, '')
+      .replace(/\[contenteditable="true"\]:hover::after[^}]*\{[^}]*\}/g, '')
+      .replace(/#toolbar[^}]*\{[^}]*\}/g, '')
+      .replace(/#toast[^}]*\{[^}]*\}/g, '')
+      .replace(/\.btn[^}]*\{[^}]*\}/g, '')
+      .replace(/\.tb-[^}]*\{[^}]*\}/g, '');
+  });
+
+  // Remove the page top padding added by toolbar
+  const pageEl = clone.querySelector('.page');
+  if (pageEl) pageEl.style.paddingTop = '';
+
+  const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'dnata_innovation_deck_' + new Date().toISOString().slice(0,10) + '.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+
+  // Show toast
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── PREVENT ENTER KEY FROM CREATING <div> blocks ──
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.target.isContentEditable) {
+    e.preventDefault();
+  }
+});
 </script>
 
 
