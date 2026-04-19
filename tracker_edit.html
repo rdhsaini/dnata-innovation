@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dnata · Tracker · Edit</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#F4F6FA;color:#1A2B4A;font-size:13px;-webkit-font-smoothing:antialiased;margin:0;padding:0}
+:root{--navy:#0D1B3E;--gold:#C9A84C;--bg:#F4F6FA;--surface:#fff;--border:#E2E8F0;--muted:#7A90B0;--text:#1A2B4A;--blue:#2060C8;--blue-lt:#EBF1FC;--amber:#C47A0A;--amber-lt:#FEF3DC;--green:#1A7A45;--green-lt:#E3F5EB;--slate:#8899B4;--slate-lt:#EDF0F5;}
+#bar{background:var(--navy);padding:9px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;width:100%}
+.bar-l{display:flex;align-items:center;gap:8px}
+.badge{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:99px;padding:2px 10px}
+.hint{font-size:11px;color:rgba(255,255,255,.45)}
+.bar-r{display:flex;gap:6px;align-items:center}
+.stxt{font-size:10px;color:rgba(255,255,255,.4);font-style:italic}
+button{font-family:inherit;font-size:11px;font-weight:500;padding:5px 12px;border-radius:7px;border:none;cursor:pointer;transition:opacity .15s}
+.bg{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}.bg:hover{background:rgba(255,255,255,.18)}
+.bp{background:var(--gold);color:var(--navy);font-weight:700}.bp:hover{opacity:.88}.bp:disabled{opacity:.45;cursor:not-allowed}
+.page{max-width:1100px;margin:0 auto;padding:20px 24px}
+.hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:14px}
+.eyebrow{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.title{font-size:20px;font-weight:600;color:var(--navy)}
+.wbadge{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 14px;text-align:center}
+.wlbl{font-size:9px;color:var(--muted);margin-bottom:1px}
+.wval{font-size:13px;font-weight:600;color:var(--navy);outline:none}
+.twrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:visible;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+table{width:100%;border-collapse:collapse}
+th,td{border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+th:last-child,td:last-child{border-right:none}
+thead th{background:var(--navy);color:#fff;font-size:9px;font-weight:600;letter-spacing:.06em;text-align:center;padding:11px 8px}
+thead th.ihd{text-align:left;padding-left:14px;width:190px}
+thead th.ahd{width:36px}
+td.ic{padding:0;width:190px}
+.ii{display:flex;align-items:center;gap:8px;padding:13px 12px;position:relative}
+.ibar{position:absolute;left:0;top:0;bottom:0;width:3px}
+.inum{font-size:8px;font-weight:700;color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.iname{font-size:12px;font-weight:600;color:var(--text);flex:1;min-width:0;outline:none;border-radius:3px}
+.iname:focus{background:rgba(201,168,76,.08);box-shadow:0 0 0 2px rgba(201,168,76,.3)}
+td.sc{text-align:center;padding:11px 6px;position:relative;overflow:visible}
+td.sc:hover{z-index:400}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:99px;border:1px solid;font-size:10.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .12s,box-shadow .12s;user-select:none}
+.pill:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pip{background:var(--amber-lt);color:var(--amber);border-color:#E8B84B}
+.pdc{background:var(--blue-lt);color:var(--blue);border-color:#7AAAE8}
+.plv{background:var(--green-lt);color:var(--green);border-color:#7AC89A}
+.pna{background:var(--slate-lt);color:var(--slate);border-color:#C8D4E0}
+.pbl{background:transparent;color:#CCC;border-color:#E8EDF4}.pbl:hover{background:var(--bg)}
+.abtn{width:22px;height:22px;border-radius:50%;border:1.5px dashed var(--border);background:none;color:var(--muted);font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .15s}
+.abtn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06)}
+.xbtn{width:20px;height:20px;border-radius:50%;border:1.5px solid #FECACA;background:none;color:#EF4444;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.xbtn:hover{background:#FEF2F2}
+.ainibtn{font-size:11px;color:var(--muted);background:none;border:1.5px dashed var(--border);border-radius:8px;padding:6px;cursor:pointer;width:100%;transition:all .15s;margin:8px 0}
+.ainibtn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06)}
+tbody tr:nth-child(even) td{background:#FAFBFD}
+.picker{position:fixed;z-index:1000;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:5px;min-width:160px;display:none}
+.picker.open{display:block}
+.popt{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;color:var(--text);transition:background .12s}
+.popt:hover{background:var(--bg)}
+.pdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.li{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
+.ld{width:7px;height:7px;border-radius:50%}
+.be{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:300;align-items:center;justify-content:center}
+.be.open{display:flex}
+.bbox{background:var(--surface);border-radius:14px;padding:20px;width:380px;box-shadow:0 16px 48px rgba(0,0,0,.18)}
+.bbox h3{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.bbox p{font-size:11px;color:var(--muted);margin-bottom:10px}
+.bbox textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:12px;color:var(--text);resize:vertical;min-height:72px;outline:none}
+.bbox textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,168,76,.2)}
+.bbtns{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+#toast{position:fixed;bottom:18px;right:18px;z-index:999;background:var(--navy);color:#fff;font-size:12px;padding:9px 16px;border-radius:9px;box-shadow:0 6px 20px rgba(0,0,0,.2);opacity:0;transform:translateY(6px);transition:opacity .22s,transform .22s;pointer-events:none}
+#toast.show{opacity:1;transform:translateY(0)}
+#toast.err{background:#B91C1C}
+.cs-form{padding:8px;border-top:1px solid var(--border);margin-top:4px}
+.cs-inp{width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-family:inherit;font-size:11px;outline:none;color:var(--text);margin-bottom:6px}
+.cs-inp:focus{border-color:var(--gold)}
+.cs-colors{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.cc{width:16px;height:16px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .12s}
+.cc.sel{border-color:#000}
+.cs-add{width:100%;font-size:10px;padding:5px;background:var(--gold);color:var(--navy);font-weight:700;border:none;border-radius:6px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="bar">
+  <div class="bar-l">
+    <span class="badge">✏ Edit mode</span>
+    <span class="hint">Click tile to change · Right-click to add tooltip · Click name to rename</span>
+  </div>
+  <div class="bar-r">
+    <span class="stxt" id="stxt">Loading...</span>
+    <button class="bg" onclick="resetAll()">↺ Reset</button>
+    <button class="bp" id="pbtn" onclick="publish()" disabled>⬆ Publish live</button>
+  </div>
+</div>
+<div class="page">
+  <div class="hdr">
+    <div>
+      <div class="eyebrow">Innovation & Digitalisation · dnata Cargo</div>
+      <div class="title">Global Network Initiative Tracker</div>
+    </div>
+    <div class="wbadge">
+      <div class="wlbl">Week of</div>
+      <div class="wval" id="wval" contenteditable="true">Apr 2026</div>
+    </div>
+  </div>
+  <div class="twrap">
+    <table id="tbl">
+      <thead><tr id="thead-row">
+        <th class="ihd">Initiative</th>
+        <th class="ahd"><button class="abtn" title="Add country" onclick="addCountry()">+</button></th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div style="padding:4px 10px 8px">
+      <button class="ainibtn" onclick="addIni()">+ Add initiative row</button>
+    </div>
+  </div>
+  <div class="legend">
+    <span style="font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px">Status key</span>
+    <div class="li"><div class="ld" style="background:var(--amber)"></div>In Progress</div>
+    <div class="li"><div class="ld" style="background:var(--blue)"></div>Discovery</div>
+    <div class="li"><div class="ld" style="background:var(--green)"></div>Live</div>
+    <div class="li"><div class="ld" style="background:var(--slate)"></div>N/A</div>
+    <div class="li" style="margin-left:auto;font-style:italic;color:var(--muted)">💬 Right-click any tile to add tooltip</div>
+  </div>
+</div>
+
+<div class="picker" id="picker">
+  <div class="popt" onmousedown="setSt('ip')"><div class="pdot" style="background:#C47A0A"></div>In Progress</div>
+  <div class="popt" onmousedown="setSt('dc')"><div class="pdot" style="background:#2060C8"></div>Discovery</div>
+  <div class="popt" onmousedown="setSt('lv')"><div class="pdot" style="background:#1A7A45"></div>Live</div>
+  <div class="popt" onmousedown="setSt('na')"><div class="pdot" style="background:#8899B4"></div>N/A</div>
+  <div class="popt" onmousedown="setSt('bl')" style="color:var(--muted)"><div class="pdot" style="background:#DDD"></div>Clear</div>
+  <div id="custom-opts"></div>
+  <div class="cs-form">
+    <div style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">+ Custom status</div>
+    <input class="cs-inp" id="cs-name" placeholder="e.g. On Hold, Blocked..." maxlength="20"/>
+    <div class="cs-colors" id="cs-colors"></div>
+    <button class="cs-add" onmousedown="addCustomStatus()">Add status</button>
+  </div>
+</div>
+
+<div class="be" id="be">
+  <div class="bbox">
+    <h3>Edit hover tooltip</h3>
+    <p>Text shown when hovering this tile on the published view.</p>
+    <textarea id="bta" placeholder="e.g. Requirements gathering complete. Vendor demo scheduled for May 2026."></textarea>
+    <div class="bbtns">
+      <button class="bg" style="background:var(--bg);color:var(--text)" onclick="closeBE()">Cancel</button>
+      <button class="bp" onclick="saveBE()">Save tooltip</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+const PALETTE=['#2060C8','#0B7A63','#6B35C4','#C47A0A','#A0348A','#DC2626','#0891B2','#D97706','#059669','#7C3AED','#BE185D','#374151'];
+const COLS=['#2060C8','#0B7A63','#6B35C4','#C47A0A','#A0348A','#1E6EBB','#D97706'];
+let SM={ip:{cls:'pip',dot:'#C47A0A',label:'In Progress'},dc:{cls:'pdc',dot:'#2060C8',label:'Discovery'},lv:{cls:'plv',dot:'#1A7A45',label:'Live'},na:{cls:'pna',dot:'#8899B4',label:'N/A'},bl:{cls:'pbl',dot:'#DDD',label:'—'}};
+let selColor=PALETTE[0],activePill=null,activeBE=null;
+let D=getDefault();
+
+function getDefault(){return{week:'Apr 2026',countries:['UK','Iraq','US','AE','Swiss','ZNZ','PAK','AMS','BEL'],initiatives:[{num:'01',title:'Dimensioning PoC',color:'#2060C8'},{num:'02',title:'Market Intelligence',color:'#0B7A63'},{num:'03',title:'ADM / TMS',color:'#6B35C4'},{num:'04',title:'[Initiative 4]',color:'#C47A0A'},{num:'05',title:'[Initiative 5]',color:'#A0348A'}],statuses:[['ip','na','dc','dc','na','na','na','na','na'],['dc','na','na','dc','na','na','na','na','na'],['dc','na','na','ip','na','na','dc','dc','dc'],['bl','bl','bl','bl','bl','bl','bl','bl','bl'],['bl','bl','bl','bl','bl','bl','bl','bl','bl']],blurbs:{},customStatuses:{}};}
+
+function initColorPicker(){const el=document.getElementById('cs-colors');el.innerHTML='';PALETTE.forEach(col=>{const d=document.createElement('div');d.className='cc'+(col===selColor?' sel':'');d.style.background=col;d.onmousedown=(e)=>{e.preventDefault();selColor=col;initColorPicker()};el.appendChild(d)});}
+
+function applyCustomStyles(){document.querySelectorAll('.dyn-style').forEach(s=>s.remove());Object.entries(D.customStatuses||{}).forEach(([key,st])=>{const r=parseInt(st.dot.slice(1,3),16),g=parseInt(st.dot.slice(3,5),16),b=parseInt(st.dot.slice(5,7),16);const style=document.createElement('style');style.className='dyn-style';style.textContent=`.cs-${key}{background:rgba(${r},${g},${b},0.12);color:${st.dot};border-color:${st.dot}}`;document.head.appendChild(style);SM[key]=st;});}
+
+function renderCustomOpts(){const el=document.getElementById('custom-opts');el.innerHTML='';Object.entries(D.customStatuses||{}).forEach(([key,st])=>{const d=document.createElement('div');d.className='popt';d.innerHTML=`<div class="pdot" style="background:${st.dot}"></div>${st.label}<span style="margin-left:auto;color:#CCC;font-size:10px;padding:0 4px" onmousedown="removeCustom('${key}',event)">×</span>`;d.onmousedown=(e)=>{if(e.target.tagName!=='SPAN')setSt(key)};el.appendChild(d)});}
+
+function addCustomStatus(){const name=document.getElementById('cs-name').value.trim();if(!name){toast('Enter a status name',true);return;}const key='cs_'+name.toLowerCase().replace(/\s+/g,'_')+'_'+Date.now();if(!D.customStatuses)D.customStatuses={};D.customStatuses[key]={cls:'cs-'+key,dot:selColor,label:name};document.getElementById('cs-name').value='';applyCustomStyles();renderCustomOpts();toast('Status "'+name+'" added — hit Publish to save');}
+
+function removeCustom(key,e){e.preventDefault();if(!confirm('Remove this status?'))return;delete D.customStatuses[key];delete SM[key];applyCustomStyles();renderCustomOpts();}
+
+function render(){
+  document.getElementById('wval').textContent=D.week;
+  const hr=document.getElementById('thead-row');
+  while(hr.children.length>1)hr.removeChild(hr.children[1]);
+  D.countries=D.countries.filter(c=>c.toLowerCase()!=='initiative');
+  D.countries.forEach((c,ci)=>{const th=document.createElement('th');th.innerHTML=`<span contenteditable="true" onblur="renameC(${ci},this.textContent.trim())">${c}</span>`;hr.appendChild(th);});
+  const addTh=document.createElement('th');addTh.className='ahd';addTh.innerHTML='<button class="abtn" title="Add country" onclick="addCountry()">+</button>';hr.appendChild(addTh);
+  const tb=document.getElementById('tbody');tb.innerHTML='';
+  D.initiatives.forEach((ini,ri)=>{
+    const tr=document.createElement('tr');
+    const tdI=document.createElement('td');tdI.className='ic';
+    tdI.innerHTML=`<div class="ii"><div class="ibar" style="background:${ini.color}"></div><div class="inum" style="background:${ini.color}">${ini.num}</div><div class="iname" contenteditable="true" onblur="renameI(${ri},this.textContent.trim())">${ini.title}</div><button class="xbtn" onclick="removeI(${ri})">×</button></div>`;
+    tr.appendChild(tdI);
+    D.countries.forEach((_,ci)=>{
+      const st=(D.statuses[ri]||[])[ci]||'bl';
+      const s=SM[st]||SM.bl;
+      const blurb=(D.blurbs||{})[`${ri}-${ci}`]||'';
+      const td=document.createElement('td');td.className='sc';td.id=`c${ri}-${ci}`;
+      td.innerHTML=`<span class="pill ${s.cls}" onclick="openP(event,${ri},${ci})" oncontextmenu="openBE(event,${ri},${ci})"><span class="dot" style="background:${s.dot}"></span>${s.label}${blurb?' 💬':''}</span>`;
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+}
+
+function openP(e,ri,ci){
+  e.stopPropagation();
+  activePill={ri,ci};
+  const pk=document.getElementById('picker');
+  pk.style.top=(e.clientY+6)+'px';
+  pk.style.left=(e.clientX-70)+'px';
+  pk.classList.add('open');
+}
+function setSt(st){
+  if(!activePill)return;
+  const{ri,ci}=activePill;
+  if(!D.statuses[ri])D.statuses[ri]=[];
+  D.statuses[ri][ci]=st;
+  const s=SM[st]||SM.bl;
+  const blurb=(D.blurbs||{})[`${ri}-${ci}`]||'';
+  document.getElementById(`c${ri}-${ci}`).innerHTML=`<span class="pill ${s.cls}" onclick="openP(event,${ri},${ci})" oncontextmenu="openBE(event,${ri},${ci})"><span class="dot" style="background:${s.dot}"></span>${s.label}${blurb?' 💬':''}</span>`;
+  closeP();
+}
+function closeP(){document.getElementById('picker').classList.remove('open');activePill=null;}
+// Use mousedown so picker closes AFTER selection registers
+document.addEventListener('mousedown',function(e){if(!document.getElementById('picker').contains(e.target))closeP();});
+
+function openBE(e,ri,ci){e.preventDefault();e.stopPropagation();activeBE=`${ri}-${ci}`;document.getElementById('bta').value=(D.blurbs||{})[activeBE]||'';document.getElementById('be').classList.add('open');}
+function closeBE(){document.getElementById('be').classList.remove('open');activeBE=null;}
+function saveBE(){if(!activeBE)return;if(!D.blurbs)D.blurbs={};D.blurbs[activeBE]=document.getElementById('bta').value.trim();const[ri,ci]=activeBE.split('-').map(Number);const st=(D.statuses[ri]||[])[ci]||'bl';const s=SM[st]||SM.bl;const blurb=D.blurbs[activeBE];document.getElementById(`c${ri}-${ci}`).innerHTML=`<span class="pill ${s.cls}" onclick="openP(event,${ri},${ci})" oncontextmenu="openBE(event,${ri},${ci})"><span class="dot" style="background:${s.dot}"></span>${s.label}${blurb?' 💬':''}</span>`;closeBE();toast('💬 Tooltip saved — hit Publish to go live');}
+
+function addCountry(){const n=prompt('Country / station name:');if(!n)return;D.countries.push(n.trim());D.initiatives.forEach((_,ri)=>{if(!D.statuses[ri])D.statuses[ri]=[];D.statuses[ri].push('bl');});render();}
+function addIni(){const n=D.initiatives.length+1;D.initiatives.push({num:String(n).padStart(2,'0'),title:`[Initiative ${n}]`,color:COLS[(n-1)%COLS.length]});D.statuses.push(new Array(D.countries.length).fill('bl'));render();}
+function removeI(ri){if(!confirm('Remove this initiative?'))return;D.initiatives.splice(ri,1);D.statuses.splice(ri,1);D.initiatives.forEach((ini,i)=>ini.num=String(i+1).padStart(2,'0'));render();}
+function renameC(ci,v){if(v)D.countries[ci]=v;}
+function renameI(ri,v){if(v)D.initiatives[ri].title=v;}
+document.getElementById('wval').addEventListener('blur',function(){D.week=this.textContent.trim();});
+
+async function loadSaved(){
+  const btn=document.getElementById('pbtn'),st=document.getElementById('stxt');
+  try{
+    const r=await fetch('/api/load');
+    const d=await r.json();
+    if(d.ok&&d.content){
+      const saved=typeof d.content==='string'?JSON.parse(d.content):d.content;
+      if(saved&&saved.countries)D=saved;
+      if(!D.customStatuses)D.customStatuses={};
+      const dt=d.updated?new Date(d.updated).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'—';
+      st.textContent='Last published: '+dt;
+    }else st.textContent='No saved version yet';
+  }catch(e){st.textContent='Using defaults';}
+  applyCustomStyles();renderCustomOpts();render();
+  btn.disabled=false;
+}
+
+async function publish(){
+  const btn=document.getElementById('pbtn'),st=document.getElementById('stxt');
+  btn.disabled=true;btn.textContent='Publishing...';
+  D.week=document.getElementById('wval').textContent.trim();
+  try{
+    const r=await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:JSON.stringify(D)})});
+    const d=await r.json();
+    if(d.ok){const dt=new Date().toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});st.textContent='Published at '+dt+' ✓';toast('✓ Published! Live tracker updated');}
+    else throw new Error(d.error);
+  }catch(e){toast('✗ Publish failed: '+e.message,true);st.textContent='Publish failed';}
+  btn.disabled=false;btn.textContent='⬆ Publish live';
+}
+
+function resetAll(){if(!confirm('Reset to last published version?'))return;loadSaved();}
+function toast(msg,err=false){const t=document.getElementById('toast');t.textContent=msg;t.className=err?'show err':'show';setTimeout(()=>t.className='',3000);}
+
+initColorPicker();
+loadSaved();
+</script>
+</body>
+</html>
