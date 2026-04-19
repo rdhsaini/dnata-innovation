@@ -326,7 +326,9 @@ function setSt(st) {
   closeP();
 }
 function closeP() { document.getElementById('picker').classList.remove('open'); activePill = null; }
-document.addEventListener('click', closeP);
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('picker').contains(e.target)) closeP();
+});;
 
 // ── BLURB ──
 function openBE(e, ri, ci) {
