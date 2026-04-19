@@ -322,7 +322,7 @@ async function loadSaved() {
   const btn = document.getElementById('pbtn');
   const st  = document.getElementById('stxt');
   try {
-    const r = await fetch('/api/load?key=tracker%3Acontent');
+    const r = await fetch('/api/load');
     const d = await r.json();
     if (d.ok && d.content) {
       const saved = typeof d.content==='string' ? JSON.parse(d.content) : d.content;
